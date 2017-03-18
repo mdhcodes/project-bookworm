@@ -19,10 +19,19 @@ span {
   top: -20px;
 }
 
-.mood-btn {
+h5 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.param-btn {
 	margin: 5px;
 }
 
-.mood-block {
+.param-block {
 	text-align: center;
+}
+
+.submit-param {
+  margin-top: 25px;
 }
