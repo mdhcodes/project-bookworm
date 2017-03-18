@@ -18,3 +18,11 @@ span {
   right: 100px;
   top: -20px;
 }
+
+.mood-btn {
+	margin: 5px;
+}
+
+.mood-block {
+	text-align: center;
+}
