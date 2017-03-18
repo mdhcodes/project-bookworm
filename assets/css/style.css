@@ -1,3 +1,4 @@
+/*Landing page*/
 span {
   font-size: 350px;
 }
@@ -19,23 +20,14 @@ span {
   top: -20px;
 }
 
-
-.mood-btn {
-	margin: 5px;
-}
-
-.param-block {
+/*Search page*/
+.textCenter {
 	text-align: center;
 }
 
-
-.submit-param {
-  margin-top: 25px;
-}
-
-.brackets {
-	position: relative;
+h5 {
 	display: inline-block;
+	vertical-align: super
 }
 
 .left-bracket {
@@ -49,13 +41,26 @@ span {
   right: 100px;
 }
 
-.textCenter {
-	text-align: center;
+.param-block {
+  margin-top: 40px;
+  text-align: center;
 }
 
-h5 {
-	display: inline-block;
-	vertical-align: super
-  margin-top: 40px;
-  margin-bottom: 15px;
+.param-btn {
+  margin: 5px;
 }
+
+.submit-param {
+  margin-top: 25px;
+}
+
+.brackets {
+  display: inline-block;
+  position: relative;
+}
+
+#author {
+  left: 80px;
+  position: relative;
+}
+
