@@ -19,6 +19,15 @@ span {
   top: -20px;
 }
 
+
+.mood-btn {
+	margin: 5px;
+}
+
+.mood-block {
+	text-align: center;
+}
+
 .brackets {
 	position: relative;
 	display: inline-block;
@@ -43,3 +52,4 @@ h5 {
 	display: inline-block;
 	vertical-align: super;
 }
+
