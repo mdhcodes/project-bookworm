@@ -1,0 +1,20 @@
+span {
+  font-size: 350px;
+}
+
+#container1 {
+  position: relative;
+  padding-top: 50px;
+}
+
+#left-bracket {
+  position: absolute;
+  left: 100px;
+  top: -20px;
+}
+
+#right-bracket {
+  position: absolute;
+  right: 100px;
+  top: -20px;
+}
