@@ -18,3 +18,28 @@ span {
   right: 100px;
   top: -20px;
 }
+
+.brackets {
+	position: relative;
+	display: inline-block;
+}
+
+.left-bracket {
+  font-size: 50px;
+  left: 100px;
+  
+}
+
+.right-bracket {
+  font-size: 50px;
+  right: 100px;
+}
+
+.textCenter {
+	text-align: center;
+}
+
+h5 {
+	display: inline-block;
+	vertical-align: super;
+}
