@@ -1,23 +1,23 @@
 /*Landing page*/
-span {
-  font-size: 350px;
-}
 
 #container1 {
   position: relative;
   padding-top: 50px;
 }
 
-#left-bracket {
+#left-bracket,
+#right-bracket {
+  font-size: 350px;
   position: absolute;
-  left: 100px;
   top: -20px;
 }
 
+#left-bracket {
+  left: 100px;
+}
+
 #right-bracket {
-  position: absolute;
   right: 100px;
-  top: -20px;
 }
 
 /*Search page*/
