@@ -1,69 +1,71 @@
 /*Landing page*/
 
 #container1 {
-  position: relative;
-  padding-top: 50px;
+    position: relative;
+    padding-top: 50px;
 }
 
 #left-bracket,
 #right-bracket {
-  font-size: 350px;
-  position: absolute;
-  top: -20px;
+    font-size: 350px;
+    position: absolute;
+    top: -20px;
 }
 
 #left-bracket {
-  left: 100px;
+    left: 100px;
 }
 
 #right-bracket {
-  right: 100px;
+    right: 100px;
 }
 
+
 /*Search page*/
+
 .textCenter {
-	text-align: center;
+    text-align: center;
 }
 
 h5 {
-	display: inline-block;
-	vertical-align: super
+    display: inline-block;
+    vertical-align: super
 }
 
 .left-bracket {
-  font-size: 50px;
-  left: 100px;
-  
+    font-size: 50px;
+    left: 100px;
 }
 
 .right-bracket {
-  font-size: 50px;
-  right: 100px;
+    font-size: 50px;
+    right: 100px;
 }
 
 .param-block {
-  margin-top: 40px;
-  text-align: center;
+    margin-top: 40px;
+    text-align: center;
 }
 
 .param-btn {
-  margin: 5px;
+    margin: 5px;
 }
 
 .submit-param {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .brackets {
-  display: inline-block;
-  position: relative;
+    display: inline-block;
+    position: relative;
 }
 
 #author {
-  left: 80px;
-  position: relative;
+    left: 80px;
+    position: relative;
 }
 
-.nyt-list-name {
-  text-align: center;
+.nyt-list-name,
+.i-dream-books {
+    text-align: center;
 }
