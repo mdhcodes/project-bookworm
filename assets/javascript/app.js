@@ -1,48 +1,50 @@
 $('.search').on('click', function() {
-     $('#results-div').html("");
-     var search = $(this).attr("id");
-     console.log(search);
+    $('#results-div').html("");
+    var search = $(this).attr("id");
+    console.log(search);
 
-     var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&maxResults=5';
+    var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&maxResults=5';
 
-     $.ajax({
-         url: googleBooksURL,
-         method: 'GET',
-         dataType: 'jsonp'
-     }).done(function(result) {
-         console.log('Google Books', result);
+    var h3 = $('<h3 class="list-name">');
+    h3.text($(this).text());
 
-         var h3 = $('<h3 class="list-name">');
-         h3.text(search);
-         $('#results-div').append(h3);
-         $('#results-div').append('<div class="api-data">');
-         setTimeout(function() {
-             $('#results-collapse').trigger('click');
-         }, 200);
-         for (var i = 0; i < result.items.length; i++) {
-             console.log(result.items[i].volumeInfo.imageLinks.thumbnail)
-             $('.api-data').append(
-                 '<!--   Icon Section   -->' +
-                 '<div class="col s12 m6 l3">' +
-                 '<div class="icon-block">' +
-                 '<div class="card">' +
-                 '<div class="card-image waves-effect waves-block waves-light">' +
-                 '<img class="activator book-img" src="' + result.items[i].volumeInfo.imageLinks.thumbnail + '">' +
-                 '</div>' +
-                 '<div class="card-content">' +
-                 '<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<i class="material-icons right">more_vert</i></span>' +
-                 '<p><a href="#">This is a link</a></p>' +
-                 '</div>' +
-                 '<div class="card-reveal">' +
-                 '<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>' +
-                 '<p>' + result.items[i].volumeInfo.description + '</p>' +
-                 '</div>' +
-                 '</div>' +
-                 '</div>' +
-                 '</div>'
-             );
-         }
-   }).fail(function(error) {
+    $.ajax({
+        url: googleBooksURL,
+        method: 'GET',
+        dataType: 'jsonp'
+    }).done(function(result) {
+        console.log('Google Books', result);
+
+
+        $('#results-div').append(h3);
+        $('#results-div').append('<div class="api-data">');
+        setTimeout(function() {
+            $('#results-collapse').trigger('click');
+        }, 200);
+        for (var i = 0; i < result.items.length; i++) {
+            console.log(result.items[i].volumeInfo.imageLinks.thumbnail)
+            $('.api-data').append(
+                '<!--   Icon Section   -->' +
+                '<div class="col s12 m6 l3">' +
+                '<div class="icon-block">' +
+                '<div class="card">' +
+                '<div class="card-image waves-effect waves-block waves-light">' +
+                '<img class="activator book-img" src="' + result.items[i].volumeInfo.imageLinks.thumbnail + '">' +
+                '</div>' +
+                '<div class="card-content">' +
+                '<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<i class="material-icons right">more_vert</i></span>' +
+                '<p><a href="#">This is a link</a></p>' +
+                '</div>' +
+                '<div class="card-reveal">' +
+                '<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>' +
+                '<p>' + result.items[i].volumeInfo.description + '</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>'
+            );
+        }
+    }).fail(function(error) {
         console.log('Google Books: An error occurred.');
     });
 
@@ -51,13 +53,13 @@ $('.search').on('click', function() {
 
 // Google Books API - Author Search
 
-$("#author-search").on('click', function(){
+$("#author-search").on('click', function() {
 
-//Grab the text from the user
-var author = $("#author").val().trim();
+    //Grab the text from the user
+    var author = $("#author").val().trim();
 
-    
-var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author + '&maxResults=10';
+
+    var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author + '&maxResults=10';
 
     $.ajax({
         url: googleBooksURL,
@@ -83,7 +85,7 @@ var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author +
                 '<img class="activator book-img" src="' + result.items[i].volumeInfo.imageLinks.thumbnail + '">' +
                 '</div>' +
                 '<div class="card-content">' +
-                '<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title+ '<i class="material-icons right">more_vert</i></span>' +
+                '<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<i class="material-icons right">more_vert</i></span>' +
                 '<p><a href="#">This is a link</a></p>' +
                 '</div>' +
                 '<div class="card-reveal">' +
@@ -105,7 +107,7 @@ var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author +
 
 $('#nytButton').on('click', function() {
 
-    
+
     var nyTimesKey = 'a9c6282043404e258f246983bccaf593';
     var nyTimesURL = 'https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=' + nyTimesKey;
     $.ajax({
