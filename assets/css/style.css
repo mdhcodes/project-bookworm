@@ -9,7 +9,6 @@
 #right-bracket {
     font-size: 350px;
     position: absolute;
-    top: -20px;
 }
 
 #left-bracket {
@@ -63,11 +62,6 @@ h5 {
 #author {
     left: 80px;
     position: relative;
-}
-
-.nyt-list-name,
-.i-dream-books {
-    text-align: center;
 }
 
 /*Collapsable Search Element*/
