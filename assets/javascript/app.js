@@ -1,11 +1,64 @@
-// Google Books API - General Search
-
 $('.search').on('click', function() {
+     $('#apiData').html("");
+     var search = $(this).attr("id");
+     console.log(search);
 
-    var search = $(this).text();
-    console.log(search);
+     var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&maxResults=5';
 
-    var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&maxResults=5';
+     $.ajax({
+         url: googleBooksURL,
+         method: 'GET',
+         dataType: 'jsonp'
+     }).done(function(result) {
+         console.log('Google Books', result);
+
+         var h3 = $('<h3 class="list-name">');
+         h3.text(search);
+         $('#apiData').append(h3);
+         $('#apiData').append('<div class="container api-data">');
+
+         for (var i = 0; i < result.items.length; i++) {
+             console.log(result.items[i].volumeInfo.imageLinks.thumbnail)
+             $('.api-data').append('<div class="section">' +
+                 '<!--   Icon Section   -->' +
+                 '<div class="row">' +
+                 '<div class="col s12 m6 l3">' +
+                 '<div class="icon-block">' +
+                 '<div class="card">' +
+                 '<div class="card-image waves-effect waves-block waves-light">' +
+                 '<img class="activator book-img" src="' + result.items[i].volumeInfo.imageLinks.thumbnail + '">' +
+                 '</div>' +
+                 '<div class="card-content">' +
+                 '<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<i class="material-icons right">more_vert</i></span>' +
+                 '<p><a href="#">This is a link</a></p>' +
+                 '</div>' +
+                 '<div class="card-reveal">' +
+                 '<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>' +
+                 '<p>' + result.items[i].volumeInfo.description + '</p>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>'
+             );
+         }
+   }).fail(function(error) {
+        console.log('Google Books: An error occurred.');
+    });
+
+});
+
+
+// Google Books API - Author Search
+
+$("#author-search").on('click', function(){
+
+//Grab the text from the user
+var author = $("#author").val().trim();
+
+    
+var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author + '&maxResults=10';
 
     $.ajax({
         url: googleBooksURL,
@@ -13,22 +66,42 @@ $('.search').on('click', function() {
         dataType: 'jsonp'
     }).done(function(result) {
         console.log('Google Books', result);
+        var h3 = $('<h3 class="list-name">');
+        h3.text(author);
+        $('#apiData').append(h3);
+        $('#apiData').append('<div class="container api-data">');
+
+        for (var i = 0; i < result.items.length; i++) {
+
+            $('.api-data').append('<div class="section">' +
+                '<!--   Icon Section   -->' +
+                '<div class="row">' +
+                '<div class="col s12 m6 l3">' +
+                '<div class="icon-block">' +
+                '<div class="card">' +
+                '<div class="card-image waves-effect waves-block waves-light">' +
+                '<img class="activator book-img" src="' + result.items[i].volumeInfo.imageLinks.thumbnail + '">' +
+                '</div>' +
+                '<div class="card-content">' +
+                '<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title+ '<i class="material-icons right">more_vert</i></span>' +
+                '<p><a href="#">This is a link</a></p>' +
+                '</div>' +
+                '<div class="card-reveal">' +
+                '<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>' +
+                '<p>' + result.items[i].volumeInfo.description + '</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>'
+            );
+        }
     }).fail(function(error) {
         console.log('Google Books: An error occurred.');
     });
 
-}); // end .search click event
-
-
-
-
-// Google Books API - Author Search
-
-var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=authors&maxResults=5';
-
-
-
-
+});
 
 // NY Times Books API
 
@@ -76,7 +149,6 @@ $('#nytButton').on('click', function() {
     }).fail(function(error) {
         console.log('NY Times: An error occurred.');
     });
-
 }); // end #nytButton click event
 
 
