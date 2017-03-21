@@ -85,6 +85,28 @@ h5 {
     display: none;
 }
 
+
+/*About Us page*/
+
+.about-us {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  text-align: left;
+}
+
+figcaption a {
+  border-bottom: 1px dashed;
+}
+
+#pew-data {
+  margin-top: 50px;
+}
+
+.connect {
+  margin: 1em 0;
+}
+
 /*Sticky Footer*/
 body {
     display: flex;
