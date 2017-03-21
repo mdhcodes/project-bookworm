@@ -1,5 +1,5 @@
 $('.search').on('click', function() {
-     $('#apiData').html("");
+     $('#results-div').html("");
      var search = $(this).attr("id");
      console.log(search);
 
@@ -14,14 +14,15 @@ $('.search').on('click', function() {
 
          var h3 = $('<h3 class="list-name">');
          h3.text(search);
-         $('#apiData').append(h3);
-         $('#apiData').append('<div class="container api-data">');
-
+         $('#results-div').append(h3);
+         $('#results-div').append('<div class="api-data">');
+         setTimeout(function() {
+             $('#results-collapse').trigger('click');
+         }, 200);
          for (var i = 0; i < result.items.length; i++) {
              console.log(result.items[i].volumeInfo.imageLinks.thumbnail)
-             $('.api-data').append('<div class="section">' +
+             $('.api-data').append(
                  '<!--   Icon Section   -->' +
-                 '<div class="row">' +
                  '<div class="col s12 m6 l3">' +
                  '<div class="icon-block">' +
                  '<div class="card">' +
@@ -35,8 +36,6 @@ $('.search').on('click', function() {
                  '<div class="card-reveal">' +
                  '<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>' +
                  '<p>' + result.items[i].volumeInfo.description + '</p>' +
-                 '</div>' +
-                 '</div>' +
                  '</div>' +
                  '</div>' +
                  '</div>' +
@@ -68,14 +67,15 @@ var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author +
         console.log('Google Books', result);
         var h3 = $('<h3 class="list-name">');
         h3.text(author);
-        $('#apiData').append(h3);
-        $('#apiData').append('<div class="container api-data">');
-
+        $('#results-div').append(h3);
+        $('#results-div').append('<div class="api-data">');
+        setTimeout(function() {
+            $('#results-collapse').trigger('click');
+        }, 200);
         for (var i = 0; i < result.items.length; i++) {
 
-            $('.api-data').append('<div class="section">' +
+            $('.api-data').append(
                 '<!--   Icon Section   -->' +
-                '<div class="row">' +
                 '<div class="col s12 m6 l3">' +
                 '<div class="icon-block">' +
                 '<div class="card">' +
@@ -89,8 +89,6 @@ var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author +
                 '<div class="card-reveal">' +
                 '<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>' +
                 '<p>' + result.items[i].volumeInfo.description + '</p>' +
-                '</div>' +
-                '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
