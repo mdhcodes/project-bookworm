@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Project Template">
-    <title>Project Template</title>
+    <title>Project Bookworm</title>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS -->
@@ -27,80 +27,97 @@
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-    <div class="section no-pad-bot" id="index-banner">
-    </div>
-    <div class="container">
-        <div class="section">
-            <!--   Icon Section   -->
-            <div class="row">
-                <div class="col s12 m6">
-                    <!-- Mood Search -->
-                    <div class="icon-block param-block">
-                        <span class="left-bracket">{</span>
-                        <h5 class="center">Mood</h5>
-                        <span class="right-bracket">}</span>
-                        <div class="row">
-                            <a class="waves-effect waves-light btn param-btn search" id="happy">Happy</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="sad">Sad</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="angry">Angry</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="adventurous">Adventurous</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="romantic">Romantic</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="relaxes">Relaxed</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <!-- Genre Search -->
-                    <div class="icon-block param-block">
-                        <span class="left-bracket">{</span>
-                        <h5 class="center">Genre</h5>
-                        <span class="right-bracket">}</span>
-                        <div class="row">
-                            <a class="waves-effect waves-light btn param-btn search" id="drama">Drama</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="mystery">Mystery</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="fantasy">Fantasy</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="romance">Romance</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="historical">Historical</a>
-                            <a class="waves-effect waves-light btn param-btn search" id="non-fiction">Non-Fiction</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <!-- Author Search -->
-                    <div class="icon-block param-block">
-                        <span class="left-bracket">{</span>
-                        <h5 class="center">Author</h5>
-                        <span class="right-bracket">}</span>
-                        <form>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="author" type="text" class="validate">
+    <main>
+        <div class="section no-pad-bot" id="index-banner">
+        </div>
+        <div class="container"> 
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header active" id="search-collapse"><i class="material-icons">search</i>Search</div>
+                    <div class="collapsible-body">
+                        <div id="search-div">
+                            <div class="section">
+                                <!--   Icon Section   -->
+                                <div class="row">
+                                    <div class="col s12 m6">
+                                        <!-- Mood Search -->
+                                        <div class="icon-block param-block">
+                                            <span class="left-bracket">{</span>
+                                            <h5 class="center">Mood</h5>
+                                            <span class="right-bracket">}</span>
+                                            <div class="row">
+                                                <a class="waves-effect waves-light btn param-btn search" id="happy">Happy</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="sad">Sad</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="angry">Angry</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="adventurous">Adventurous</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="romantic">Romantic</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="relaxes">Relaxed</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m6">
+                                        <!-- Genre Search -->
+                                        <div class="icon-block param-block">
+                                            <span class="left-bracket">{</span>
+                                            <h5 class="center">Genre</h5>
+                                            <span class="right-bracket">}</span>
+                                            <div class="row">
+                                                <a class="waves-effect waves-light btn param-btn search" id="drama">Drama</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="mystery">Mystery</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="fantasy">Fantasy</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="romance">Romance</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="historical">Historical</a>
+                                                <a class="waves-effect waves-light btn param-btn search" id="non-fiction">Non-Fiction</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m6">
+                                        <!-- Author Search -->
+                                        <div class="icon-block param-block">
+                                            <span class="left-bracket">{</span>
+                                            <h5 class="center">Author</h5>
+                                            <span class="right-bracket">}</span>
+                                            <form>
+                                                <div class="row">
+                                                    <div class="input-field col s6">
+                                                        <input id="author" type="text" class="validate">
+                                                    </div>
+                                                    <a class="waves-effect waves-light btn submit-param" type="submit"><i class="material-icons">search</i></a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m6 brackets textCenter">
+                                        <div class="icon-block param-block">
+                                            <span class="left-bracket">{</span>
+                                            <h5 class="center">Trending</h5>
+                                            <span class="right-bracket">}</span>
+                                            <div class="row center">
+                                                <a id="nytButton" class="waves-effect waves-light btn submit-param">New York Time's Best Sellers</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a class="waves-effect waves-light btn submit-param" type="submit"><i class="material-icons">search</i></a>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col s12 m6 brackets textCenter">
-                    <div class="icon-block param-block">
-                        <span class="left-bracket">{</span>
-                        <h5 class="center">Trending</h5>
-                        <span class="right-bracket">}</span>
-                        <p class="light">Checkout The New York Times Best Sellers!</p>
-                        <div class="row center">
-                            <a id="nytButton" class="waves-effect waves-light btn submit-param">New York Times</a>
+                            <br>
+                            <br>
+                            <div class="section">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <div class="collapsible-header" id="results-collapse"><i class="material-icons">view_module</i>Results</div>
+                    <div class="collapsible-body">
+                        <div id="apiData">
+                            <div class="row" id="results-div">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <br>
-        <br>
-        <div class="section">
-        </div>
-    </div>
-    </div>
-    <div id="apiData"></div>
+    </main>
     <footer class="page-footer #9e9e9e grey">
         <div class="container">
             <div class="row">

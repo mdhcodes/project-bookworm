@@ -69,3 +69,29 @@ h5 {
 .i-dream-books {
     text-align: center;
 }
+
+/*Collapsable Search Element*/
+.collapsible, .collapsible-header, .collapsible-body {
+    border: none;
+    box-shadow: none;
+}
+
+#results-collapse {
+    border-top: 1px solid #ddd;
+    display: none;
+}
+
+#search-collapse {
+    display: none;
+}
+
+/*Sticky Footer*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
