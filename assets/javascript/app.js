@@ -30,7 +30,7 @@ $('.search').on('click', function() {
             $('.api-data').append(col);
             var iconBlock = $('<div class="icon-block">');
             col.append(iconBlock);
-            var card = $('<div class="card">');
+            var card = $('<div class="card medium">');
             iconBlock.append(card);
             var cardImage = $('<div class="card-image waves-effect waves-block waves-light">');
             card.append(cardImage);
@@ -61,7 +61,7 @@ $('.search').on('click', function() {
 
 $("#author-search").on('click', function() {
 
-     $('#results-div').html("");
+    $('#results-div').html("");
 
     //Grab the text from the user
     var author = $("#author").val().trim();
@@ -119,7 +119,7 @@ $("#author-search").on('click', function() {
 
 $('#nytButton').on('click', function() {
 
-     $('#results-div').html("");
+    $('#results-div').html("");
 
     var nyTimesKey = 'a9c6282043404e258f246983bccaf593';
     var nyTimesURL = 'https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=' + nyTimesKey;
@@ -138,33 +138,33 @@ $('#nytButton').on('click', function() {
         }, 200);
         for (var i = 0; i < result.results.lists.length; i++) {
 
-          $('.api-data').append('<!--   Icon Section   -->');
-          var col = $('<div class="col s12 m6 l3">');
-          $('.api-data').append(col);
-          var iconBlock = $('<div class="icon-block">');
-          col.append(iconBlock);
-          var card = $('<div class="card">');
-          iconBlock.append(card);
-          var cardImage = $('<div class="card-image waves-effect waves-block waves-light">');
-          card.append(cardImage);
-          var image = $('<img class="activator" src="' + result.results.lists[0].books[i].book_image + '">');
-          cardImage.append(image);
-          var cardContent = $('<div class="card-content">');
-          card.append(cardContent);
-          var cardTitle = $('<span class="card-title activator grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<i class="material-icons right">more_vert</i></span>');
-          cardContent.append(cardTitle);
-          //var link = $('<p><a href="#">This is a link</a></p>');
-          //var link = $('<p><a id="' + i + '" href="' + result["ISBN:" + result.results.lists[0].books[i].primary_isbn10 + ""].url + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
-          var link = $('<p><a id="' + i + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
-          cardContent.append(link);
-          var cardReveal = $('<div class="card-reveal">');
-          card.append(cardReveal);
-          var cardRevealTitle = $('<span class="card-title grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<br>' + result.results.lists[0].books[i].author + '<i class="material-icons right">close</i></span>');
-          cardReveal.append(cardRevealTitle);
-          var description = $('<p>' + result.results.lists[0].books[i].description + '</p>');
-          cardReveal.append(description);
+            $('.api-data').append('<!--   Icon Section   -->');
+            var col = $('<div class="col s12 m6 l3">');
+            $('.api-data').append(col);
+            var iconBlock = $('<div class="icon-block">');
+            col.append(iconBlock);
+            var card = $('<div class="card">');
+            iconBlock.append(card);
+            var cardImage = $('<div class="card-image waves-effect waves-block waves-light">');
+            card.append(cardImage);
+            var image = $('<img class="activator" src="' + result.results.lists[0].books[i].book_image + '">');
+            cardImage.append(image);
+            var cardContent = $('<div class="card-content">');
+            card.append(cardContent);
+            var cardTitle = $('<span class="card-title activator grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<i class="material-icons right">more_vert</i></span>');
+            cardContent.append(cardTitle);
+            //var link = $('<p><a href="#">This is a link</a></p>');
+            //var link = $('<p><a id="' + i + '" href="' + result["ISBN:" + result.results.lists[0].books[i].primary_isbn10 + ""].url + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
+            var link = $('<p><a id="' + i + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
+            cardContent.append(link);
+            var cardReveal = $('<div class="card-reveal">');
+            card.append(cardReveal);
+            var cardRevealTitle = $('<span class="card-title grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<br>' + result.results.lists[0].books[i].author + '<i class="material-icons right">close</i></span>');
+            cardReveal.append(cardRevealTitle);
+            var description = $('<p>' + result.results.lists[0].books[i].description + '</p>');
+            cardReveal.append(description);
 
-          console.log('ISBN' + i, result.results.lists[0].books[i].primary_isbn10);
+            console.log('ISBN' + i, result.results.lists[0].books[i].primary_isbn10);
 
         }
 

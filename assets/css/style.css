@@ -64,8 +64,12 @@ h5 {
     position: relative;
 }
 
+
 /*Collapsable Search Element*/
-.collapsible, .collapsible-header, .collapsible-body {
+
+.collapsible,
+.collapsible-header,
+.collapsible-body {
     border: none;
     box-shadow: none;
 }
@@ -83,28 +87,30 @@ h5 {
 /*About Us page*/
 
 .about-us {
-  max-width: 600px;
-  margin: 0 auto;
-  padding-bottom: 30px;
-  text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    text-align: left;
 }
 
 figcaption a {
-  border-bottom: 1px dashed;
+    border-bottom: 1px dashed;
 }
 
 #pew-data {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 .connect {
-  margin: 1em 0;
+    margin: 1em 0;
 }
 
+
 /*Sticky Footer*/
+
 body {
     display: flex;
-    min-height: 100vh;
+    max-height: 50vh;
     flex-direction: column;
 }
 
