@@ -12,8 +12,22 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <!-- Firebase Initialize -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyATvc-gaxRtsoe_bHQnCu0-V2JjJC1d2Lw",
+        authDomain: "project-bookworm-a8b4e.firebaseapp.com",
+        databaseURL: "https://project-bookworm-a8b4e.firebaseio.com",
+        storageBucket: "project-bookworm-a8b4e.appspot.com",
+        messagingSenderId: "921516040607"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
     <!-- Author Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -49,6 +63,7 @@
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <script src="assets/javascript/app.js"></script>
+   
 </body>
 
 </html>
