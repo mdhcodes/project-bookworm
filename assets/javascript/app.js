@@ -242,6 +242,39 @@ $(document).ready(function() {
     }); // end NYT search
 
 
+// Open Library API
+    $(document).on('click', '.library', function() {
+
+      var isbn = $(this).attr('data-isbn');
+      console.log('Open Library ISBN', isbn);
+
+      var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=data';
+
+      $.ajax({
+          url: openLibraryURL,
+          method: 'GET',
+          dataType: 'jsonp'
+      }).done(function(result) {
+          console.log('Open Library', result);
+
+          var link = result["ISBN:" + isbn + ""].url || false;
+          console.log('Link', link);
+          if(link) {
+            // The window object opens a new tab with the link.
+            window.open(link);
+          } else {
+          // Modal will display if there is no link available.
+          $('.modal').modal();
+          $('#library-modal').open();
+
+          }
+      }).fail(function(error) {
+          console.log('Open Library: An error occurred.');
+      });
+
+    }); // end .library click event
+
+
 // Collapsible Behavior (results/search)
     $('#search-collapse').on('click', function() {
         // When search collapsable is expanded, hide the search icon and show the results icon
@@ -272,35 +305,3 @@ $(document).ready(function() {
     });
 
 }); // End Document(ready)
-
-
-
-// Open Library API
-$(document).on('click', '.library', function() {
-
-  var isbn = $(this).attr('data-isbn');
-  console.log('Open Library ISBN', isbn);
-
-  var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=data';
-
-  $.ajax({
-      url: openLibraryURL,
-      method: 'GET',
-      dataType: 'jsonp'
-  }).done(function(result) {
-      console.log('Open Library', result);
-
-      var link = result["ISBN:" + isbn + ""].url || false;
-      console.log('Link', link);
-      if(link) {
-        // The window object opens a new tab with the link.
-        window.open(link);
-      } else {
-      // Modal will display if there is no link available.
-
-      }
-  }).fail(function(error) {
-      console.log('Open Library: An error occurred.');
-  });
-
-}); // end .library click event
