@@ -20,7 +20,7 @@
 }
 
 
-/*Search page*/
+/*Search and Results page*/
 
 .textCenter {
     text-align: center;
@@ -76,7 +76,7 @@ h5 {
   font-size: 1em;
 }
 
-/*Collapsable Search Element*/
+/*Collapsable Search/Results Element*/
 
 .collapsible,
 .collapsible-header,
@@ -92,6 +92,35 @@ h5 {
 
 #search-collapse {
     opacity: 0;
+}
+
+/*Results Modal*/
+#modal-result {
+    width: 75%;
+    max-height: 80% !important;
+    /*overflow: hidden;*/
+}
+
+.modal-img {
+    max-height: 200px;
+}
+
+.modal-close {
+    float: left !important;
+    padding: 10px;
+    line-height: 0;
+}
+
+#info-text > .row {
+    margin-right: 20px;
+}
+
+#preview-text {
+    margin-bottom: 0px !important;
+}
+
+.modal-content {
+    padding-bottom: 0px !important;
 }
 
 /*Sign-In Page*/
@@ -121,25 +150,6 @@ figcaption a {
 .connect {
     margin: 1em 0;
 }
-
-/*Modal*/
-.modal-btn {
-    /*background-color: transparent;
-    line-height: 1.5;
-    font-family: "Roboto", sans-serif;
-    font-weight: normal;
-    border: none;
-    color: #039be5;
-    cursor: pointer;*/
-/*    position: relative;
-    top: -10px;
-    left: -30px;*/
-}
-.modal-btn:focus {
-   /* outline: none;
-    background-color: transparent;*/
-}
-
 
 
 /*Sticky Footer*/

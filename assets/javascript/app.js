@@ -123,6 +123,9 @@ $(document).ready(function() {
 // Initialize Modals
     $('.modal').modal();
 
+// Initialize Google Book Preview
+    google.books.load();
+
 // Mood Search AND Genre Search- Google Books API
     $('.search').on('click', function() {
         // Reset results div
@@ -283,33 +286,67 @@ $(document).ready(function() {
         $('#title-div').html('');
         $('#author-div').html('');
         $('#description-div').html('');
-        $('#preview-div').html('');
+        // $('#preview-div').html('');
         $('#library-div').html('');
         $('#buy-div').html('');
         // Get and store data attributes
-        var title = $(this).attr('data-title');
-        var author = $(this).attr('data-author');
-        var description = $(this).attr('data-description');
-        var isbn = $(this).attr('data-isbn');
+        var titleData = $(this).attr('data-title');
+        var title = $('<h5/>', {
+            id: 'title-text'
+        });
+        var authorData = $(this).attr('data-author');
+        var author = $('<h6/>', {
+            id: 'author-text'
+        });
+        var descriptionData = $(this).attr('data-description');
+        var description = $('<p/>', {
+            id: 'description-text'
+        });
         var imgURL = $(this).attr('data-img');
         var img = $('<img/>', {
-            src: imgURL
+            src: imgURL,
+            class: 'modal-img'
         });
+        var isbn = $(this).attr('data-isbn');
         var libraryButton = $('<a/>', {
             class: 'waves-effect waves-light btn library',
             'data-isbn': isbn,
             text: 'Library Info'
         });
         // Populate modal with stored data
+        (title).append(titleData);
         $('#title-div').append(title);
+        (author).append(authorData);
         $('#author-div').append(author);
+        (description).append(descriptionData);
         $('#description-div').append(description);
         $('#img-div').append(img);
         $('#library-div').append(libraryButton);
+        // Create book preview according to Google documentation
+        initialize(isbn);
+        // var viewer = new google.books.DefaultViewer(document.getElementById('preview-div'));
+        // viewer.load('ISBN:' + isbn);
+
         // Open modal
         $('#modal-result').modal('open');
         console.log($(this).attr('data-isbn'));
     });
+
+// Stored Google Books functions
+function prevNotFound() {
+    console.log("could not embed the book!");
+    $('#preview-div').hide();
+    $('#previewYes').hide();
+    $('#previewNo').show();
+}
+
+function initialize(isbnFn) {
+    $('#preview-div').show();
+    $('#previewYes').show();
+    $('#previewNo').hide();
+    var viewer = new google.books.DefaultViewer(document.getElementById('preview-div'));
+    viewer.load('ISBN:' + isbnFn, prevNotFound);
+}
 
 
 // Sign-In Modal
