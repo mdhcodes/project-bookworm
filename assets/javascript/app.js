@@ -153,6 +153,9 @@ function resultsNyt (obj) {
 
 $(document).ready(function() {
 
+// Initialize Modals
+    $('.modal').modal();
+
 // Mood Search AND Genre Search- Google Books API
     $('.search').on('click', function() {
         // Reset results div
@@ -262,32 +265,35 @@ $(document).ready(function() {
 // Open Library API
     $(document).on('click', '.library', function() {
 
-      var isbn = $(this).attr('data-isbn');
-      console.log('Open Library ISBN', isbn);
+        var isbn = $(this).attr('data-isbn');
+        console.log('Open Library ISBN', isbn);
 
-      var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=data';
+        var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=data';
 
-      $.ajax({
-          url: openLibraryURL,
-          method: 'GET',
-          dataType: 'jsonp'
-      }).done(function(result) {
-          console.log('Open Library', result);
-
-          var link = result["ISBN:" + isbn + ""].url || false;
-          console.log('Link', link);
-          if(link) {
-            // The window object opens a new tab with the link.
-            window.open(link);
-          } else {
-          // Modal will display if there is no link available.
-          $('.modal').modal();
-          $('#library-modal').open();
+         $.ajax({
+            url: openLibraryURL,
+            method: 'GET',
+            dataType: 'jsonp'
+        }).done(function(result) {
+            console.log('Open Library', result);
+            var resultObj = result["ISBN:" + isbn + ""];
+            
+            // console.log('Link', link);
+            if(result["ISBN:" + isbn + ""] === undefined) {
+                // If no result found...
+                // Modal will display if there is no link available.
+                $('#library-modal').modal('open');
+                console.log('link don\'t work! - modal time!');
+            } else {
+                // If result is found...
+                // The window object opens a new tab with the link.
+                window.open(result["ISBN:" + isbn + ""].url);
+                console.log('link available');
 
           }
-      }).fail(function(error) {
+        }).fail(function(error) {
           console.log('Open Library: An error occurred.');
-      });
+        });
 
     }); // end .library click event
 
@@ -307,16 +313,14 @@ $(document).ready(function() {
 
 
 // Results Modal (more info display)
-    $('.modal').modal();
+    
     $('#apiData').on('click', '.modal-btn', function() {
         $('#modal1').modal('open');
         console.log($(this).attr('data-isbn'));
     });
 
 
-
 // Sign-In Modale
-    $('.modal').modal();
     $('#siBtn').on('click', function() {
         $('#signIn').modal('open');
     });
