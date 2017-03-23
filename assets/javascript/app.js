@@ -213,13 +213,12 @@ $('#results-collapse').on('click', function() {
 });
 
 //Sign-In Modale
-$(document).ready(function(){
+$(document).ready(function() {
     $('.modal').modal();
-       $('#siBtn').on('click', function() {
-       $('#signIn').modal('open');
+    $('#siBtn').on('click', function() {
+        $('#signIn').modal('open');
     });
 });
-
 
 
 // Open Library API
