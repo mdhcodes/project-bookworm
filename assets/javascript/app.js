@@ -189,6 +189,14 @@ $('#results-collapse').on('click', function() {
     $('#search-collapse').fadeIn('fast');
 });
 
+//Sign-In Modale
+$(document).ready(function(){
+    $('.modal').modal();
+       $('#siBtn').on('click', function() {
+       $('#signIn').modal('open');
+    });
+});
+    
 
 /*
 // Open Library API
