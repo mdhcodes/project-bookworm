@@ -40,36 +40,50 @@
             <div id="modal-result" class="modal">
                 <div class="modal-content">
                     <div class="row">
-                        <div class="col s3" id="img-div">
-                            <!-- Cover thumbnail -->
-                        </div>
-                        <div class="col s3">
-                            <div class="row" id="title-div">
-                                <!-- Title -->
+                        <div class="col m12 l6">
+                            <div class="row">
+                                <div class="col m12 l4" id="img-div">
+                                    <!-- Cover thumbnail -->
+                                </div>
+                                <div class="col m12 l8" id="info-text">
+                                    <div class="row" id="title-div">
+                                        <!-- Title -->
+                                    </div>
+                                    <div class="row" id="author-div">
+                                        <!-- Author -->
+                                    </div>
+                                    <div class="row" id="description-div">
+                                        <!-- Description/Summary -->
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row" id="author-div">
-                                <!-- Author -->
+                            <div class="row">
+                                <div class="col s12" id="bookfind-div">
+                                    <p>See availability in local libraries on OpenLibrary.com</p>
+                                    <div id="library-div">
+                                        <!-- Link to Open Library -->
+                                    </div>
+                                    <p>Where to buy</p>
+                                    <div id="buy-div">
+                                        <!-- Purchasing information -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col s6" id="description-div">
-                            <!-- Description/Summary -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s6" id="preview-div">
-                            <!-- Book preview -->
-                        </div>
-                        <div class="col s6" id="bookfind-div">
-                            <p>See availability in local libraries on OpenLibrary.com</p>
-                            <div id="library-div">
-                                <!-- Link to Open Library -->
+                        <div class="col m12 l6">
+                            <div class="row" id="preview-text">
+                                <h5 id="previewYes">Google Books Preview</h5>
                             </div>
-                            <p>Where to buy</p>
-                            <div id="buy-div">
-                                <!-- Purchasing information -->
+                            <div class="row">
+                                <h6 id="previewNo">No Preview Available</h6>
+                            </div>
+                            <div class="row">
+                                <div class="col s12" id="preview-div" style="height: 435px">
+                                    <!-- Book preview -->
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>             
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Back to Results<i class="material-icons">done</i></a>
@@ -215,6 +229,8 @@
     <script src="assets/javascript/app.js"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <!-- Google Book Preview JavaScript -->
+    <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
 </body>
 
 </html>
