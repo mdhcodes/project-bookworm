@@ -12,11 +12,55 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <!-- Author Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+    <nav class="#cfd8dc blue-grey lighten-4" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo"></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyATvc-gaxRtsoe_bHQnCu0-V2JjJC1d2Lw",
+        authDomain: "project-bookworm-a8b4e.firebaseapp.com",
+        databaseURL: "https://project-bookworm-a8b4e.firebaseio.com",
+        storageBucket: "project-bookworm-a8b4e.appspot.com",
+        messagingSenderId: "921516040607"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <!-- Initializes the sign-in widget from firebase web -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script type="text/javascript">
+    var uiConfig = {
+        signInSuccessUrl: 'page2.html',
+        signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#signIn', uiConfig);
+    </script>
     <div class="section no-pad-bot" id="index-banner">
         <div id="container1" class="container">
             <span id="left-bracket">{</span><span id="right-bracket">}</span>
@@ -43,6 +87,9 @@
         <br>
         <div class="section">
         </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="signIn">
     </div>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
