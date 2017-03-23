@@ -101,7 +101,7 @@ $(document).ready(function() {
             console.log('Google Books: An error occurred.');
         });
 
-    }); //End Mood Search
+    }); //End Mood and Genre Search
 
 
 // Author Search - Google Books API
@@ -222,42 +222,10 @@ $(document).ready(function() {
                 cardContent.append(modalBtn);
             } //End for loop
 
-            // for (var i = 0; i < result.results.lists.length; i++) {
-
-            //     $('.api-data').append('<!--   Icon Section   -->');
-            //     var col = $('<div class="col s12 m6 l3">');
-            //     $('.api-data').append(col);
-            //     var iconBlock = $('<div class="icon-block">');
-            //     col.append(iconBlock);
-            //     var card = $('<div class="card">');
-            //     iconBlock.append(card);
-            //     var cardImage = $('<div class="card-image waves-effect waves-block waves-light">');
-            //     card.append(cardImage);
-            //     var image = $('<img class="activator" src="' + result.results.lists[0].books[i].book_image + '">');
-            //     cardImage.append(image);
-            //     var cardContent = $('<div class="card-content">');
-            //     card.append(cardContent);
-            //     var cardTitle = $('<span class="card-title activator grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<i class="material-icons right">more_vert</i></span>');
-            //     cardContent.append(cardTitle);
-            //     //var link = $('<p><a href="#">This is a link</a></p>');
-            //     //var link = $('<p><a id="' + i + '" href="' + result["ISBN:" + result.results.lists[0].books[i].primary_isbn10 + ""].url + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
-            //     var link = $('<p><a id="' + i + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
-            //     cardContent.append(link);
-            //     var cardReveal = $('<div class="card-reveal">');
-            //     card.append(cardReveal);
-            //     var cardRevealTitle = $('<span class="card-title grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<br>' + result.results.lists[0].books[i].author + '<i class="material-icons right">close</i></span>');
-            //     cardReveal.append(cardRevealTitle);
-            //     var description = $('<p>' + result.results.lists[0].books[i].description + '</p>');
-            //     cardReveal.append(description);
-
-            //     console.log('ISBN' + i, result.results.lists[0].books[i].primary_isbn10);
-
-            // }
-
         }).fail(function(error) {
             console.log('NY Times: An error occurred.');
         });
-    }); // end NYT Best Sellers search
+    }); // end NYT search
 
 
 // Collapsible Behavior (results/search)
