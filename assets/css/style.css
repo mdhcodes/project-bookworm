@@ -64,6 +64,14 @@ h5 {
     position: relative;
 }
 
+#apiData {
+    opacity: 0;
+}
+
+.results-body {
+    height: 1015px;
+}
+
 
 /*Collapsable Search Element*/
 
@@ -76,11 +84,11 @@ h5 {
 
 #results-collapse {
     border-top: 1px solid #ddd;
-    display: none;
+    opacity: 0;
 }
 
 #search-collapse {
-    display: none;
+    opacity: 0;
 }
 
 /*Sign-In Page*/
@@ -110,6 +118,25 @@ figcaption a {
 .connect {
     margin: 1em 0;
 }
+
+/*Modal*/
+.modal-btn {
+    /*background-color: transparent;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    border: none;
+    color: #039be5;
+    cursor: pointer;*/
+/*    position: relative;
+    top: -10px;
+    left: -30px;*/
+}
+.modal-btn:focus {
+   /* outline: none;
+    background-color: transparent;*/
+}
+
 
 
 /*Sticky Footer*/
