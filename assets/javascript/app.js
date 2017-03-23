@@ -29,7 +29,7 @@ function resultsHTML(imageFn, titleFn, authorFn, descriptionFn, isbnFn, iFn) {
     card.append(cardContent);
     var cardTitle = $('<span/>', {
         class: 'card-title activator grey-text text-darken-4',
-        text: titleFn
+        text: caseFix(titleFn)
     });
     cardContent.append(cardTitle);
     // Create results modal trigger button HTML
@@ -37,7 +37,7 @@ function resultsHTML(imageFn, titleFn, authorFn, descriptionFn, isbnFn, iFn) {
         id: 'btn-modal-' + iFn,
         class: 'modal-btn btn-floating waves-effect waves-light',
         'data-img': imageFn,
-        'data-title': titleFn,
+        'data-title': caseFix(titleFn),
         'data-author': authorFn,
         'data-description': descriptionFn,
         'data-isbn': isbnFn
@@ -74,16 +74,17 @@ function resultsGoogle (obj) {
 } //End resultsGoogle stored function
 
 
-// Function to capitalize the first letter of every word in the title.
+// Stored Function - only capitalize the first letter of every word in the title.
 function caseFix(str) {
-   var newTitle = [];
+    str = str.toLowerCase().split(' ');
+    var newTitle = [];
     for (var i = 0; i < str.length; i++) {
         newTitle.push(str[i][0].toUpperCase() + str[i].slice(1));
         title = newTitle.join(' ');
-       }
-        console.log(title);
-        return title;
-      }
+    }
+    console.log(title);
+    return title;
+} //End caseFix stored function
 
 
 // Stored function - NYT API HTML write
@@ -100,17 +101,12 @@ function resultsNyt (obj) {
             // Loop through results inside each category
             for(var j = 0; j < (obj.results.lists[i].books.length-1); j++) {
                 var title = obj.results.lists[i].books[j].title;
-                title = title.toLowerCase().split(' ');
-                // Execute caseFix() to capitalize the first letter of every word in the title.
-                caseFix(title);
                 var author = obj.results.lists[i].books[j].author;
                 var image = obj.results.lists[i].books[j].book_image;
                 var description = obj.results.lists[i].books[j].description;
                 var isbn = obj.results.lists[i].books[j].primary_isbn10;
-
                 // Call function to write result cards, modal trigger, and Open Library button
                 resultsHTML(image, title, author, description, isbn, i);
-                //console.log('ISBN', isbn);
             } // end j for loop
         } // end if statement
     } // end i for loop
@@ -159,8 +155,7 @@ $(document).ready(function() {
             resultsGoogle(result);
         }).fail(function(error) {
             console.log('Google Books: An error occurred.');
-        });
-
+        }); // end API call
     }); //End Mood and Genre Search
 
 
@@ -195,7 +190,7 @@ $(document).ready(function() {
             resultsGoogle(result);
         }).fail(function(error) {
             console.log('Google Books: An error occurred.');
-        });
+        }); // end API call
     }); //End author search
 
 
@@ -259,9 +254,9 @@ $(document).ready(function() {
 
         }).fail(function(error) {
           console.log('Open Library: An error occurred.');
-        });
+        }); // end API call
 
-    }); // end .library click event
+    }); // end open library .library click event
 
 
 // Collapsible Behavior (results/search)
@@ -322,31 +317,31 @@ $(document).ready(function() {
         $('#description-div').append(description);
         $('#img-div').append(img);
         $('#library-div').append(libraryButton);
-        // Create book preview according to Google documentation
+        // Call function to create book preview
         initialize(isbn);
-        // var viewer = new google.books.DefaultViewer(document.getElementById('preview-div'));
-        // viewer.load('ISBN:' + isbn);
-
+        
         // Open modal
         $('#modal-result').modal('open');
         console.log($(this).attr('data-isbn'));
-    });
+    }); // end .modal-btn click event
 
 // Stored Google Books functions
-function prevNotFound() {
-    console.log("could not embed the book!");
-    $('#preview-div').hide();
-    $('#previewYes').hide();
-    $('#previewNo').show();
-}
+    // function if preview can not load
+    function prevNotFound() {
+        console.log("could not embed the book!");
+        $('#preview-div').hide();
+        $('#previewYes').hide();
+        $('#previewNo').show();
+    }
 
-function initialize(isbnFn) {
-    $('#preview-div').show();
-    $('#previewYes').show();
-    $('#previewNo').hide();
-    var viewer = new google.books.DefaultViewer(document.getElementById('preview-div'));
-    viewer.load('ISBN:' + isbnFn, prevNotFound);
-}
+    // function to display preview
+    function initialize(isbnFn) {
+        $('#preview-div').show();
+        $('#previewYes').show();
+        $('#previewNo').hide();
+        var viewer = new google.books.DefaultViewer(document.getElementById('preview-div'));
+        viewer.load('ISBN:' + isbnFn, prevNotFound);
+    }
 
 
 // Sign-In Modal

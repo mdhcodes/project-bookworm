@@ -1,5 +1,4 @@
 /*Landing page*/
-
 #container1 {
     position: relative;
     padding-top: 50px;
@@ -19,9 +18,7 @@
     right: 100px;
 }
 
-
 /*Search and Results page*/
-
 .textCenter {
     text-align: center;
 }
@@ -129,9 +126,7 @@ h5 {
     color: white;
 }
 
-
 /*About Us page*/
-
 .about-us {
     max-width: 600px;
     margin: 0 auto;
@@ -151,9 +146,7 @@ figcaption a {
     margin: 1em 0;
 }
 
-
 /*Sticky Footer*/
-
 body {
     display: flex;
     max-height: 50vh;
