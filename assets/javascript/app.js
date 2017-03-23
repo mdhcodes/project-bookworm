@@ -1,5 +1,5 @@
 // Stored function - Creates results card HTML and modal trigger
-function resultsHTML(imageFn, titleFn, isbnFn, iFn) {
+function resultsHTML(imageFn, titleFn, authorFn, descriptionFn, isbnFn, iFn) {
     // Create result card HTML
     $('.api-data').append('<!--   Icon Section   -->');
     var col = $('<div/>', {
@@ -36,6 +36,10 @@ function resultsHTML(imageFn, titleFn, isbnFn, iFn) {
     var modalBtn = $('<button/>', {
         id: 'btn-modal-' + iFn,
         class: 'modal-btn btn-floating waves-effect waves-light',
+        'data-img': imageFn,
+        'data-title': titleFn,
+        'data-author': authorFn,
+        'data-description': descriptionFn,
         'data-isbn': isbnFn
     });
     var modalIcon = $('<i/>', {
@@ -44,9 +48,6 @@ function resultsHTML(imageFn, titleFn, isbnFn, iFn) {
     });
     $(modalBtn).append(modalIcon);
     cardContent.append(modalBtn);
-    // Create Open Library button
-    var libraryButton = $('<a class="waves-effect waves-light btn library" data-isbn="' + isbnFn + '">Library Info</a>');
-    card.append(libraryButton);
 } // End resultsHTML stored function
 
 
@@ -55,7 +56,7 @@ function resultsGoogle (obj) {
     // For loop through results
     for (var i = 0; i < obj.items.length; i++) {
         var title = obj.items[i].volumeInfo.title;
-        var author = obj.items[i].volumeInfo.authors[0]; //-------------- Test with new Google shelves
+        var author = obj.items[i].volumeInfo.authors[0];
         var image = obj.items[i].volumeInfo.imageLinks.thumbnail;
         var description = obj.items[i].volumeInfo.description;
         // var isbn = obj.items[i].volumeInfo.industryIdentifiers[0].identifier;
@@ -65,7 +66,7 @@ function resultsGoogle (obj) {
             if(obj.items[i].volumeInfo.industryIdentifiers[j].identifier.length === 10) {
                 var isbn = obj.items[i].volumeInfo.industryIdentifiers[j].identifier;
                 // Call function to write result cards and modal trigger
-                resultsHTML(image, title, isbn, i);
+                resultsHTML(image, title, author, description, isbn, i);
                 console.log('ISBN', isbn);
             } // end if
          } // end j loop
@@ -93,7 +94,7 @@ function resultsNyt (obj) {
                 var isbn = obj.results.lists[i].books[j].primary_isbn10;
 
                 // Call function to write result cards, modal trigger, and Open Library button
-                resultsHTML(image, title, isbn, i);
+                resultsHTML(image, title, author, description, isbn, i);
                 console.log('ISBN', isbn);
             } // end j for loop
         } // end if statement
@@ -258,9 +259,39 @@ $(document).ready(function() {
     });
 
 
-// Results Modal (more info display)
+// Results Modal (populate more info display)
+    // When modal trigger button is clicked....
     $('#apiData').on('click', '.modal-btn', function() {
-        $('#modal1').modal('open');
+        // Clear modal
+        $('#img-div').html('');
+        $('#title-div').html('');
+        $('#author-div').html('');
+        $('#description-div').html('');
+        $('#preview-div').html('');
+        $('#library-div').html('');
+        $('#buy-div').html('');
+        // Get and store data attributes
+        var title = $(this).attr('data-title');
+        var author = $(this).attr('data-author');
+        var description = $(this).attr('data-description');
+        var isbn = $(this).attr('data-isbn');
+        var imgURL = $(this).attr('data-img');
+        var img = $('<img/>', {
+            src: imgURL
+        });
+        var libraryButton = $('<a/>', {
+            class: 'waves-effect waves-light btn library',
+            'data-isbn': isbn,
+            text: 'Library Info'
+        });
+        // Populate modal with stored data
+        $('#title-div').append(title);
+        $('#author-div').append(author);
+        $('#description-div').append(description);
+        $('#img-div').append(img);
+        $('#library-div').append(libraryButton);
+        // Open modal
+        $('#modal-result').modal('open');
         console.log($(this).attr('data-isbn'));
     });
 
