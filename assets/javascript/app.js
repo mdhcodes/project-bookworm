@@ -53,14 +53,14 @@ function resultsGoogle (obj) {
         });
         $(modalBtn).append(modalIcon);
         cardContent.append(modalBtn);
-        for(var j = 0; j < result.items[i].volumeInfo.industryIdentifiers.length; j++) {
-            if(result.items[i].volumeInfo.industryIdentifiers[j].identifier.length === 10) {
+        for(var j = 0; j < obj.items[i].volumeInfo.industryIdentifiers.length; j++) {
+            if(obj.items[i].volumeInfo.industryIdentifiers[j].identifier.length === 10) {
 
                 //***********************************
                 // Check that no letters are in the API
-                console.log('ISBN', result.items[i].volumeInfo.industryIdentifiers[j].identifier);
+                console.log('ISBN', obj.items[i].volumeInfo.industryIdentifiers[j].identifier);
 
-                var libraryButton = $('<a class="waves-effect waves-light btn library" data-isbn="' + result.items[i].volumeInfo.industryIdentifiers[j].identifier + '">Library Info</a>');
+                var libraryButton = $('<a class="waves-effect waves-light btn library" data-isbn="' + obj.items[i].volumeInfo.industryIdentifiers[j].identifier + '">Library Info</a>');
                 card.append(libraryButton);
             } // end if
 
