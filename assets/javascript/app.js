@@ -74,6 +74,18 @@ function resultsGoogle (obj) {
 } //End resultsGoogle stored function
 
 
+// Function to capitalize the first letter of every word in the title.
+function caseFix(str) {
+   var newTitle = [];
+    for (var i = 0; i < str.length; i++) {
+        newTitle.push(str[i][0].toUpperCase() + str[i].slice(1));
+        title = newTitle.join(' ');
+       }
+        console.log(title);
+        return title;
+      }
+
+
 // Stored function - NYT API HTML write
 function resultsNyt (obj) {
     // Loop through results categories
@@ -88,6 +100,9 @@ function resultsNyt (obj) {
             // Loop through results inside each category
             for(var j = 0; j < (obj.results.lists[i].books.length-1); j++) {
                 var title = obj.results.lists[i].books[j].title;
+                title = title.toLowerCase().split(' ');
+                // Execute caseFix() to capitalize the first letter of every word in the title.
+                caseFix(title);
                 var author = obj.results.lists[i].books[j].author;
                 var image = obj.results.lists[i].books[j].book_image;
                 var description = obj.results.lists[i].books[j].description;
@@ -95,10 +110,11 @@ function resultsNyt (obj) {
 
                 // Call function to write result cards, modal trigger, and Open Library button
                 resultsHTML(image, title, author, description, isbn, i);
-                console.log('ISBN', isbn);
+                //console.log('ISBN', isbn);
             } // end j for loop
         } // end if statement
     } // end i for loop
+
 } // end resultsNyt stored function
 
 
@@ -224,7 +240,7 @@ $(document).ready(function() {
         }).done(function(result) {
             console.log('Open Library', result);
             var resultObj = result["ISBN:" + isbn + ""];
-            
+
             // console.log('Link', link);
             if(result["ISBN:" + isbn + ""] === undefined) {
                 // If no result found...
@@ -236,8 +252,8 @@ $(document).ready(function() {
                 // The window object opens a new tab with the link.
                 window.open(result["ISBN:" + isbn + ""].url);
                 console.log('link available');
-
           }
+
         }).fail(function(error) {
           console.log('Open Library: An error occurred.');
         });
@@ -296,7 +312,7 @@ $(document).ready(function() {
     });
 
 
-// Sign-In Modale
+// Sign-In Modal
     $('#siBtn').on('click', function() {
         $('#signIn').modal('open');
     });
