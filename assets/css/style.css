@@ -72,6 +72,9 @@ h5 {
     height: 1015px;
 }
 
+.card .card-title {
+  font-size: 1em;
+}
 
 /*Collapsable Search Element*/
 

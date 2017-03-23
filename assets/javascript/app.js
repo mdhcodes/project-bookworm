@@ -7,7 +7,7 @@ function resultsGoogle (obj) {
         var image = obj.items[i].volumeInfo.imageLinks.thumbnail;
         var description = obj.items[i].volumeInfo.description;
         var isbn = obj.items[i].volumeInfo.industryIdentifiers[0].identifier;
-        
+
         // Results cards HTML
         $('.api-data').append('<!--   Icon Section   -->');
         var col = $('<div/>', {
@@ -15,7 +15,7 @@ function resultsGoogle (obj) {
         });
         $('.api-data').append(col);
         var iconBlock = $('<div/>', {
-            class: 'icon-block'  
+            class: 'icon-block'
         });
         col.append(iconBlock);
         var card = $('<div/>', {
@@ -40,7 +40,7 @@ function resultsGoogle (obj) {
             text: title
         });
         cardContent.append(cardTitle);
-        
+
         // Modal button HTML
         var modalBtn = $('<button/>', {
             id: 'btn-modal-' + i,
@@ -56,8 +56,6 @@ function resultsGoogle (obj) {
         for(var j = 0; j < obj.items[i].volumeInfo.industryIdentifiers.length; j++) {
             if(obj.items[i].volumeInfo.industryIdentifiers[j].identifier.length === 10) {
 
-                //***********************************
-                // Check that no letters are in the API
                 console.log('ISBN', obj.items[i].volumeInfo.industryIdentifiers[j].identifier);
 
                 var libraryButton = $('<a class="waves-effect waves-light btn library" data-isbn="' + obj.items[i].volumeInfo.industryIdentifiers[j].identifier + '">Library Info</a>');
@@ -65,19 +63,19 @@ function resultsGoogle (obj) {
             } // end if
 
          } // end j loop
-      
+
     } //End i loop
 
 } //End store resultsGoogle
 
 
-$(document).ready(function() {    
-    
+$(document).ready(function() {
+
 // Mood Search AND Genre Search- Google Books API
     $('.search').on('click', function() {
         // Reset results div
         $('#results-div').html("");
-        
+
         // Store title of search
         var h3 = $('<h3 class="list-name">');
         h3.text($(this).text());
@@ -173,19 +171,20 @@ $(document).ready(function() {
             }, 200);
             for(var i = 0; i < result.results.lists.length; i++) {
 
-                if(i === 2 || i === 3 || i === 4 || i === 5 || i === 9 || i === 11 || i === 12 || i === 13) {
+              if(i === 2 || i === 3 || i === 4 || i === 5 || i === 9 || i === 11 || i === 12 || i === 13) {
+                
             // Write results to DOM
             var h3 = $('<h3>');
-            h3.text(result.results.lists[0].display_name);
+            h3.text(result.results.lists[i].display_name);
             $('#results-div').append(h3);
             $('#results-div').append('<div class="api-data">');
             for(var j = 0; j < (result.results.lists[i].books.length-1); j++) {
-                var title = result.results.lists[0].books[i].title;
-                var author = result.results.lists[0].books[i].author;
-                var image = result.results.lists[0].books[i].book_image;
-                var description = result.results.lists[0].books[i].description;
-                var isbn = result.results.lists[0].books[i].primary_isbn10;
-            
+                var title = result.results.lists[i].books[j].title;
+                var author = result.results.lists[i].books[j].author;
+                var image = result.results.lists[i].books[j].book_image;
+                var description = result.results.lists[i].books[j].description;
+                var isbn = result.results.lists[i].books[j].primary_isbn10;
+
                 // Results cards HTML
                 $('.api-data').append('<!--   Icon Section   -->');
                 var col = $('<div/>', {
@@ -193,7 +192,7 @@ $(document).ready(function() {
                 });
                 $('.api-data').append(col);
                 var iconBlock = $('<div/>', {
-                    class: 'icon-block'  
+                    class: 'icon-block'
                 });
                 col.append(iconBlock);
                 var card = $('<div/>', {
@@ -218,7 +217,7 @@ $(document).ready(function() {
                     text: title
                 });
                 cardContent.append(cardTitle);
-                
+
                 // Modal button HTML
                 var modalBtn = $('<button/>', {
                     id: 'btn-modal-' + i,
@@ -231,9 +230,9 @@ $(document).ready(function() {
                 });
                 $(modalBtn).append(modalIcon);
                 cardContent.append(modalBtn);
-                } // end if
-            } // end j
-        } // end i
+              } // end j for loop
+            } // end if statement
+        } // end i for loop
 
         }).fail(function(error) {
             console.log('NY Times: An error occurred.');
@@ -253,7 +252,7 @@ $(document).ready(function() {
         $('#results-collapse').fadeTo(100, 0);
         $('#search-collapse').fadeTo(100, 1);
     });
-    
+
 
 // Modal Logic (results - more info display)
     $('.modal').modal();
@@ -262,8 +261,8 @@ $(document).ready(function() {
         console.log($(this).attr('data-isbn'));
     });
 
-
 }); //end DocReady
+
 
 //Sign-In Modale
 $(document).ready(function() {
@@ -275,17 +274,12 @@ $(document).ready(function() {
 
 
 // Open Library API
-
 $(document).on('click', '.library', function() {
 
   var isbn = $(this).attr('data-isbn');
-  console.log('ISBN on click', typeof isbn);
-
-  //var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:0451526538&jscmd=data';
+  console.log('Open Library ISBN', isbn);
 
   var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=data';
-
-  console.log('OpenL URL', openLibraryURL);
 
   $.ajax({
       url: openLibraryURL,
@@ -297,13 +291,12 @@ $(document).on('click', '.library', function() {
       var link = result["ISBN:" + isbn + ""].url || false;
       console.log('Link', link);
       if(link) {
-        // window object can open new tab with the link
-      $(this).attr('href', result["ISBN:" + isbn + ""].url);
-      //$(this).attr('href', 'result["ISBN:0451526538"].url');
-      //console.log('ISBN on click', isbn);
-    } else {
-      // modal with no info sorry
-    }
+        // The window object opens a new tab with the link.
+        window.open(link);
+      } else {
+      // Modal will display if there is no link available.
+
+      }
   }).fail(function(error) {
       console.log('Open Library: An error occurred.');
   });
