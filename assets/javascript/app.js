@@ -110,8 +110,9 @@ $(document).ready(function() {
         $('#results-div').html("");
 
         // Set search term
-        var shelfID = $(this).attr("data-shelf");
-        var googleBooksURL = 'https://www.googleapis.com/books/v1/users/108392193120593106688/bookshelves/' + shelfID + '/volumes?maxResults=8';
+        var author = $("#author").val().trim();
+        var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=inauthor:' + author + '&maxResults=8';
+
         // API call
         $.ajax({
             url: googleBooksURL,
@@ -129,7 +130,7 @@ $(document).ready(function() {
             console.log('Google Books', result);
             // Title for results - writing to DOM
             var h3 = $('<h3 class="list-name">');
-            h3.text(search);
+            h3.text(author);
             // Write results to DOM
             $('#results-div').append(h3);
             $('#results-div').append('<div class="api-data">');
