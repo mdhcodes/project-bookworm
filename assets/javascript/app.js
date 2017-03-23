@@ -156,48 +156,71 @@ $(document).ready(function() {
             method: 'GET'
         }).done(function(result) {
             console.log('NY Times', result);
-            // Expand results element by triggering click
+            // Expand results element
             setTimeout(function() {
                 $('#results-collapse').trigger('click');
+            }, 100);
+            setTimeout(function() {
+                $('#apiData').fadeTo(500, 1);
             }, 200);
             // Write results to DOM
             var h3 = $('<h3>');
             h3.text(result.results.lists[0].display_name);
             $('#results-div').append(h3);
             $('#results-div').append('<div class="api-data">');
-            for (var i = 0; i < result.results.lists.length; i++) {
-
+            for (var i = 0; i < obj.items.length; i++) {
+                var title = obj.items[i].volumeInfo.title;
+                // var author = obj.items[i].volumeInfo.authors[0];
+                var image = obj.items[i].volumeInfo.imageLinks.thumbnail;
+                var description = obj.items[i].volumeInfo.description;
+                var isbn = obj.items[i].volumeInfo.industryIdentifiers[0].identifier;
+            
+                // Results cards HTML
                 $('.api-data').append('<!--   Icon Section   -->');
-                var col = $('<div class="col s12 m6 l3">');
+                var col = $('<div/>', {
+                    class: 'col s12 m6 l3'
+                });
                 $('.api-data').append(col);
-                var iconBlock = $('<div class="icon-block">');
+                var iconBlock = $('<div/>', {
+                    class: 'icon-block'  
+                });
                 col.append(iconBlock);
-                var card = $('<div class="card">');
+                var card = $('<div/>', {
+                    class: 'card medium'
+                });
                 iconBlock.append(card);
-                var cardImage = $('<div class="card-image waves-effect waves-block waves-light">');
+                var cardImage = $('<div/>', {
+                    class: 'card-image waves-effect waves-block waves-light'
+                });
                 card.append(cardImage);
-                var image = $('<img class="activator" src="' + result.results.lists[0].books[i].book_image + '">');
-                cardImage.append(image);
-                var cardContent = $('<div class="card-content">');
+                var imageDisp = $('<img/>', {
+                    class: 'activator',
+                    src: image
+                });
+                cardImage.append(imageDisp);
+                var cardContent = $('<div/>', {
+                    class: 'card-content'
+                });
                 card.append(cardContent);
-                var cardTitle = $('<span class="card-title activator grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<i class="material-icons right">more_vert</i></span>');
+                var cardTitle = $('<span/>', {
+                    class: 'card-title activator grey-text text-darken-4',
+                    text: title
+                });
                 cardContent.append(cardTitle);
-                //var link = $('<p><a href="#">This is a link</a></p>');
-                //var link = $('<p><a id="' + i + '" href="' + result["ISBN:" + result.results.lists[0].books[i].primary_isbn10 + ""].url + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
-                var link = $('<p><a id="' + i + '" class="find-book" data-isbn="' + result.results.lists[0].books[i].primary_isbn10 + '">Find this book</a></p>');
-                cardContent.append(link);
-                var cardReveal = $('<div class="card-reveal">');
-                card.append(cardReveal);
-                var cardRevealTitle = $('<span class="card-title grey-text text-darken-4">' + result.results.lists[0].books[i].title + '<br>' + result.results.lists[0].books[i].author + '<i class="material-icons right">close</i></span>');
-                cardReveal.append(cardRevealTitle);
-                var description = $('<p>' + result.results.lists[0].books[i].description + '</p>');
-                cardReveal.append(description);
-
-                console.log('ISBN' + i, result.results.lists[0].books[i].primary_isbn10);
-
-            }
-
-            console.log('link', link);
+                
+                // Modal button HTML
+                var modalBtn = $('<button/>', {
+                    id: 'btn-modal-' + i,
+                    class: 'modal-btn btn-floating waves-effect waves-light',
+                    'data-isbn': isbn
+                });
+                var modalIcon = $('<i/>', {
+                    class: 'material-icons',
+                    text: 'add'
+                });
+                $(modalBtn).append(modalIcon);
+                cardContent.append(modalBtn);
+            } //End for loop
 
         }).fail(function(error) {
             console.log('NY Times: An error occurred.');
