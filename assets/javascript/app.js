@@ -7,20 +7,8 @@ function resultsGoogle (obj) {
         var image = obj.items[i].volumeInfo.imageLinks.thumbnail;
         var description = obj.items[i].volumeInfo.description;
         var isbn = obj.items[i].volumeInfo.industryIdentifiers[0].identifier;
-       
-        // Test Modal
-        var modalBtn = $('<button/>', {
-            id: 'btn-modal-' + i,
-            class: 'modal-btn btn-floating waves-effect waves-light',
-            'data-isbn': isbn
-        });
-        var modalIcon = $('<i/>', {
-            class: 'material-icons',
-            text: 'add'
-        });
-        $(modalBtn).append(modalIcon);
-        // End test modal
         
+        // Results cards HTML
         $('.api-data').append('<!--   Icon Section   -->');
         var col = $('<div/>', {
             class: 'col s12 m6 l3'
@@ -53,8 +41,18 @@ function resultsGoogle (obj) {
         });
         cardContent.append(cardTitle);
         
+        // Modal button HTML
+        var modalBtn = $('<button/>', {
+            id: 'btn-modal-' + i,
+            class: 'modal-btn btn-floating waves-effect waves-light',
+            'data-isbn': isbn
+        });
+        var modalIcon = $('<i/>', {
+            class: 'material-icons',
+            text: 'add'
+        });
+        $(modalBtn).append(modalIcon);
         cardContent.append(modalBtn);
-        // cardContent.append(modalBtn);
     } //End for loop
 
 } //End resultsGoogle
@@ -68,18 +66,17 @@ $(document).ready(function() {
 
     
     
-// Mood Search - Google Books API
+// Mood Search AND Genre Search- Google Books API
     $('.search').on('click', function() {
         // Reset results div
         $('#results-div').html("");
         
-        // Title for results - storing
+        // Store title of search
         var h3 = $('<h3 class="list-name">');
         h3.text($(this).text());
         // Set search term
-        var search = $(this).attr("id");
-        console.log(search);
-        var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + search + '&filter=partial&printType=books&maxResults=8';
+        var shelfID = $(this).attr("data-shelf");
+        var googleBooksURL = 'https://www.googleapis.com/books/v1/users/108392193120593106688/bookshelves/' + shelfID + '/volumes?maxResults=8';
         // API Call
         $.ajax({
             url: googleBooksURL,
@@ -109,56 +106,35 @@ $(document).ready(function() {
 
 // Author Search - Google Books API
     $("#author-search").on('click', function() {
-        // Clear results HTML
+        // Reset results div
         $('#results-div').html("");
 
-        //Grab the text from the user input
-        var author = $("#author").val().trim();
-
-        var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=' + author + '&filter=partial&printType=books&maxResults=8';
+        // Set search term
+        var shelfID = $(this).attr("data-shelf");
+        var googleBooksURL = 'https://www.googleapis.com/books/v1/users/108392193120593106688/bookshelves/' + shelfID + '/volumes?maxResults=8';
         // API call
         $.ajax({
             url: googleBooksURL,
             method: 'GET',
             dataType: 'jsonp'
         }).done(function(result) {
-            console.log('Google Books', result);
             // Expand results element
             setTimeout(function() {
                 $('#results-collapse').trigger('click');
             }, 100);
-            // Write results to DOM
+            setTimeout(function() {
+                $('#apiData').fadeTo(500, 1);
+            }, 200);
+            // Console log JSON results
+            console.log('Google Books', result);
+            // Title for results - writing to DOM
             var h3 = $('<h3 class="list-name">');
-            h3.text(author);
+            h3.text(search);
+            // Write results to DOM
             $('#results-div').append(h3);
             $('#results-div').append('<div class="api-data">');
-            for (var i = 0; i < result.items.length; i++) {
-
-                $('.api-data').append('<!--   Icon Section   -->');
-                var col = $('<div class="col s12 m6 l3">');
-                $('.api-data').append(col);
-                var iconBlock = $('<div class="icon-block">');
-                col.append(iconBlock);
-                var card = $('<div class="card">');
-                iconBlock.append(card);
-                var cardImage = $('<div class="card-image waves-effect waves-block waves-light">');
-                card.append(cardImage);
-                var image = $('<img class="activator" src="' + result.items[i].volumeInfo.imageLinks.thumbnail + '">');
-                cardImage.append(image);
-                var cardContent = $('<div class="card-content">');
-                card.append(cardContent);
-                var cardTitle = $('<span class="card-title activator grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<i class="material-icons right">more_vert</i></span>');
-                cardContent.append(cardTitle);
-                var link = $('<p><a href="#">This is a link</a></p>');
-                cardContent.append(link);
-                var cardReveal = $('<div class="card-reveal">');
-                card.append(cardReveal);
-                var cardRevealTitle = $('<span class="card-title grey-text text-darken-4">' + result.items[i].volumeInfo.title + '<br>' + result.items[i].volumeInfo.authors + '<i class="material-icons right">close</i></span>');
-                cardReveal.append(cardRevealTitle);
-                var description = $('<p>' + result.items[i].volumeInfo.description + '</p>');
-                cardReveal.append(description);
-
-            }
+            // Call function to write HTML
+            resultsGoogle(result);
 
         }).fail(function(error) {
             console.log('Google Books: An error occurred.');
@@ -245,7 +221,8 @@ $(document).ready(function() {
 // Modal Logic (results - more info display)
     $('.modal').modal();
     $('#apiData').on('click', '.modal-btn', function() {
-        console.log('Modal button clicked!');
+        $('#modal1').modal('open');
+        console.log($(this).attr('data-isbn'));
     });
 
 
