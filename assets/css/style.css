@@ -1,4 +1,7 @@
 /*General*/
+nav, .btn {
+    box-shadow: none;
+}
 
 nav .brand-logo {
   font-size: 1.5rem;
@@ -107,12 +110,13 @@ h5 {
 }
 
 #results-collapse {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid rgb(236,123,37);
     opacity: 0;
 }
 
 #search-collapse {
     opacity: 0;
+    border-bottom: 1px solid rgb(236,123,37);
 }
 
 

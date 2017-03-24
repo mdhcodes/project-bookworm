@@ -10,21 +10,28 @@
     <title>Project Bookworm</title>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Prata" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <!-- Author Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Color Styles -->
+    <link rel="stylesheet" href="assets/css/page2.css">
 </head>
 
 <body>
     <!-- Nav Head -->
-    <nav class="#cfd8dc blue-grey lighten-4" role="navigation">
+    <nav role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="page2.html" class="brand-logo"><img src="assets/images/2e91eb2e5eb33ce34742a235087a1c42_-cute-bookworm-clipart-free-bookworm-images-free_50-50.png" alt="Image of a green worm with glasses sitting on three books."></a>
-            <ul class="right hide-on-med-and-down">
-                <!-- <li><a class="waves-effect waves-light btn" href="#" id="siBtn">Sign-In</a></li> -->
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <!-- <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li> -->
+                <li><p id="sign-in-status"></p></li>
+                <li><a id="account-details"></a></li>
+                <li><a id="sign-in" class="waves-effect waves-light btn" href="#signIn"></a></li>
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Navbar Link</a></li>
@@ -89,7 +96,7 @@
                     <p>Please enter an author's name.</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">cancel</i></a>
+                    <a href="#!" class="modal-action modal-close waves-effect btn-flat"><i class="material-icons">cancel</i></a>
                 </div>
             </div>
             <!-- End Author Search Modal -->
@@ -183,16 +190,19 @@
                 </li>
             </ul>
         </div>
-        <!-- Sign In Modal -->
-        <!-- Modal Structure -->
+        <!-- Sign in Modal -->
         <div id="signIn" class="modal">
-            <div class="modal-content">
-            </div>
+            <div id="firebaseui-auth-container"></div>
         </div>
-        <!-- End Sign In Modal -->
+        <!-- Sign out Modal -->
+        <div id="signOut" class="modal">
+        </div>
+        <!-- Account Details Modal -->
+        <div id="accountModal" class="modal">
+        </div>
     </main>
     <!-- Footer -->
-    <footer class="page-footer #9e9e9e grey">
+    <footer class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col s6">
@@ -217,12 +227,12 @@
     </footer>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- App.js -->
-    <script src="assets/javascript/app.js"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <!-- Google Book Preview JavaScript -->
     <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    <!-- App.js -->
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

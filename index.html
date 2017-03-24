@@ -10,72 +10,64 @@
     <title>Project Bookworm</title>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Prata" rel="stylesheet">
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <!-- Author Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Color Style -->
+    <link rel="stylesheet" href="assets/css/page1.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Google Book Preview JavaScript -->
+    <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <!-- Initializes the sign-in widget from firebase web -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <!-- Author Scripts -->
+    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/auth.js"></script>
+
 </head>
 
 <body>
-    <nav class="#cfd8dc blue-grey lighten-4" role="navigation">
+    <nav role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo"></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li>
+            <ul class="right">
+                <!-- <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li> -->
+                <li><p id="sign-in-status"></p></li>
+                <li><a id="account-details" class="waves-effect waves-light btn" href="#accountModal">Account Details</a></li>
+                <li><a id="sign-in" class="waves-effect waves-light btn" href="#signIn">Sign In</a></li>
+                <li><a id="sign-out" class="waves-effect waves-light btn">Sign Out</a></li>
+
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Navbar Link</a></li>
             </ul>
         </div>
     </nav>
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyATvc-gaxRtsoe_bHQnCu0-V2JjJC1d2Lw",
-        authDomain: "project-bookworm-a8b4e.firebaseapp.com",
-        databaseURL: "https://project-bookworm-a8b4e.firebaseio.com",
-        storageBucket: "project-bookworm-a8b4e.appspot.com",
-        messagingSenderId: "921516040607"
-    };
-    firebase.initializeApp(config);
-    </script>
-    <!-- Initializes the sign-in widget from firebase web -->
-    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
-    <script type="text/javascript">
-    var uiConfig = {
-        signInSuccessUrl: 'page2.html',
-        signInOptions: [
-            // Leave the lines as is for the providers you want to offer your users.
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-            firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: '<your-tos-url>'
-    };
-
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // The start method will wait until the DOM is loaded.
-    ui.start('#signIn', uiConfig);
-    </script>
     <div class="section no-pad-bot" id="index-banner">
         <div id="container1" class="container">
             <span id="left-bracket">{</span><span id="right-bracket">}</span>
             <br>
             <br>
-            <h1 class="header center orange-text">Bookworm</h1>
-            <div class="row center">
-                <img src="assets/images/2e91eb2e5eb33ce34742a235087a1c42_-cute-bookworm-clipart-free-bookworm-images-free_200-200.png" alt="Image of a green worm with glasses sitting on three books.">
-            </div>
-            <div class="row center">
-                <a href="page2.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-            </div>
+            <h1 class="header center">Project Bookworm</h1>
             <div class="row center">
                 <h5 class="header col s12 light">There's a book for every mood. Let's find yours ...</h5>
             </div>
+            <div class="row center">
+                <a href="page2.html" id="download-button" class="btn-large waves-effect waves-light">Get Started</a>
+            </div>
+            <div class="row center">
+                <img src="assets/images/2e91eb2e5eb33ce34742a235087a1c42_-cute-bookworm-clipart-free-bookworm-images-free_200-200.png" alt="Image of a green worm with glasses sitting on three books.">
+            </div>
+
             <br>
             <br>
         </div>
@@ -88,13 +80,18 @@
         <div class="section">
         </div>
     </div>
-    <!-- Modal Structure -->
-    <div id="signIn" class="modal"></div>
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
+    <!-- Sign in Modal -->
+    <div id="signIn" class="modal">
+        <div id="firebaseui-auth-container"></div>
+    </div>
+    <!-- Sign out Modal -->
+    <div id="signOut" class="modal">
+    </div>
+    <!-- Account Details Modal -->
+    <div id="accountModal" class="modal">
+    </div>
+    
+
 </body>
 
 </html>

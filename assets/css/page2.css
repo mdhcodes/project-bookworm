@@ -1,0 +1,46 @@
+body, nav, .collapsible-header {
+    /*background-image: url("../images/background.png");*/
+    background-color: rgb(171,182,187);
+}
+
+.collapsible-header, .collapsible-header > i {
+	color: rgb(50,79,87);
+}
+
+h5, h3, span {
+    font-family: 'Prata', serif;
+    color: rgb(249, 247, 243);
+}
+
+h3 {
+	color: rgb(50,79,87);
+}
+
+h5 {
+	font-size: 200%;
+}
+
+.btn, .btn-floating {
+    background-color: rgb(50,79,87);
+}
+
+.btn:hover, .btn-floating:hover {
+    background-color: rgb(171,182,187);
+}
+
+input[type=text] {
+	border-bottom: 1px solid rgb(50,79,87);
+}
+
+input[type=text]:focus:not([readonly]) {
+	border-bottom: 1px solid rgb(50,79,87);
+    box-shadow: 0 1px 0 0 rgb(50,79,87);
+}
+
+footer.page-footer {
+	background-color: rgb(50,79,87);
+}
+
+.card.medium {
+	background-color: rgb(249,247,243);
+}

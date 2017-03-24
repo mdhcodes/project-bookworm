@@ -323,8 +323,24 @@ var lettersAndSpaces = /^[a-zA-Z\s]*$/;
 
 
 // Sign-In Modal
-    $('#siBtn').on('click', function() {
+    $('#sign-in').on('click', function() {
         $('#signIn').modal('open');
+    });
+
+// Sign-out button
+    $('#sign-out').on('click', function() {
+        firebase.auth().signOut().then(function() {
+            $('#signOut').html('Sign-out successful');
+            $('#signOut').modal('open');
+        }).catch(function(error) {
+            $('#signOut').html('Sign-out error');
+            $('#signOut').modal('open');
+        });
+    });
+
+// Account details modal
+    $('#account-details').on('click', function() {
+        $('#accountModal').modal('open');
     });
 
 }); // End Document(ready)
