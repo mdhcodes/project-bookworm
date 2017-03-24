@@ -39,6 +39,11 @@
             <!-- Modal Structure -->
             <div id="modal-result" class="modal">
                 <div class="modal-content">
+                  <div class="row">
+                  <div class="col m12">
+                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><span class="back-arrow">« Back to Results</span></a>
+                  </div>
+                  </div>
                     <div class="row">
                         <div class="col m12 l6">
                             <div class="row">
@@ -57,22 +62,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col s12" id="bookfind-div">
-                                    <p>See availability in local libraries on OpenLibrary.com</p>
-                                    <div id="library-div">
-                                        <!-- Link to Open Library -->
-                                    </div>
-                                    <p>Where to buy</p>
-                                    <div id="buy-div">
-                                        <!-- Purchasing information -->
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col m12 l6">
                             <div class="row" id="preview-text">
-                                <h5 id="previewYes">Google Books Preview</h5>
+                                <h5 id="previewYes">Google Books Preview</h5><span id="buy-links">(Find Book Below)</span>
+
                             </div>
                             <div class="row">
                                 <h6 id="previewNo">No Preview Available</h6>
@@ -85,23 +79,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Back to Results<i class="material-icons">done</i></a>
-                </div>
             </div>
             <!-- End Results Modal -->
 
-            <!-- Open Library Modal -->
+            <!-- Author Search Modal -->
             <!-- Modal Structure -->
-            <div id="library-modal" class="modal">
+            <div id="author-modal" class="modal">
                 <div class="modal-content">
-                    <p>Additional information on this book is unavailable at this time.</p>
+                    <p>Please enter an author's name.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">cancel</i></a>
                 </div>
             </div>
-            <!-- End Open Library Modal -->
+            <!-- End Author Search Modal -->
+
             <!-- Collapsible -->
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
