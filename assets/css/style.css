@@ -109,16 +109,21 @@ h5 {
     box-shadow: none;
 }
 
+.results-body, .search-body {
+    padding-top: 0px;
+}
+
 #results-collapse {
     border-top: 1px solid rgb(236,123,37);
     opacity: 0;
+    cursor:default;
 }
 
 #search-collapse {
     opacity: 0;
     border-bottom: 1px solid rgb(236,123,37);
+    cursor:default;
 }
-
 
 /*Results Modal*/
 #modal-result {

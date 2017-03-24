@@ -20,6 +20,12 @@ h5 {
 	font-size: 200%;
 }
 
+a h5 {
+	color: rgb(236,123,37);
+    font-size: 180%;
+    padding-left: 15px;
+}
+
 .btn, .btn-floating {
     background-color: rgb(50,79,87);
 }
@@ -44,3 +50,25 @@ footer.page-footer {
 .card.medium {
 	background-color: rgb(249,247,243);
 }
+
+.party-time {
+	display: none;
+}
+
+.party-time img {
+    height: 28px;
+    width: 28px;
+    text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+

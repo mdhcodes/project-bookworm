@@ -10,25 +10,42 @@
     <title>Project Bookworm</title>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <!-- Author Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Color Styles -->
     <link rel="stylesheet" href="assets/css/page3.css">
+    <!-- Google Book Preview JavaScript -->
+    <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    <!-- Initializes the sign-in widget from firebase web -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <!-- Author Scripts -->
+    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/auth.js"></script>
 </head>
 
 <body>
+    <!-- Nav Bar -->
     <nav role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="page3.html" class="brand-logo"><img src="assets/images/2e91eb2e5eb33ce34742a235087a1c42_-cute-bookworm-clipart-free-bookworm-images-free_100-100.png" alt="Image of a green worm with glasses sitting on three books."></a>
+            <a id="logo-container" href="page2.html" class="brand-logo"><img src="assets/images/2e91eb2e5eb33ce34742a235087a1c42_-cute-bookworm-clipart-free-bookworm-images-free_50-50.png" alt="Image of a green worm with glasses sitting on three books."></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
+                <li><a id="account-details"></a></li>
+                <li><a id="sign-in" href="#signIn">Sign In</a></li>
+                <li><a id="sign-out">Sign Out</a></li>
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Navbar Link</a></li>
             </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
     <main id="about-us">
@@ -114,11 +131,7 @@
             </div>
         </div>
     </footer>
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
+    
 </body>
 
 </html>
