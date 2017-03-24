@@ -1,0 +1,25 @@
+body, nav {
+    /*background-image: url("../images/background.png");*/
+    background: rgb(249,247,243);
+}
+
+nav, .btn {
+    box-shadow: none;
+}
+
+h1, h5, span {
+    font-family: 'Prata', serif;
+}
+
+h1 {
+    color: rgb(173,103,42);
+}
+
+#download-button {
+    background-color: rgb(173,103,42);
+}
+
+h5, span {
+    color: rgb(50,79,87);
+}
+
