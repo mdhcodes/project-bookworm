@@ -271,14 +271,29 @@ $(document).ready(function() {
 // Collapsible Behavior (results/search)
     $('#search-collapse').on('click', function() {
         // When search collapsable is expanded, hide the search icon and show the results icon
+        if ($(this).attr('data-status') === 'expanded') {
+            $('.party-time').show();
+        } else {
+            $('.party-time').hide();
+        }
         $('#search-collapse').fadeTo(100, 0);
         $('#results-collapse').fadeTo(100, 1);
+        $('#search-collapse').attr('data-status', 'expanded').css("cursor", "default");
+        $('#results-collapse').attr('data-status', 'hidden').css("cursor", "pointer");
+
     });
 
     $('#results-collapse').on('click', function() {
         // When results collapsible is exapnded, hide the results icon and show the search icon
+        if ($(this).attr('data-status') === 'expanded') {
+            $('.party-time').show();
+        } else {
+            $('.party-time').hide();
+        }
         $('#results-collapse').fadeTo(100, 0);
         $('#search-collapse').fadeTo(100, 1);
+        $('#search-collapse').attr('data-status', 'hidden').css("cursor", "pointer");
+        $('#results-collapse').attr('data-status', 'expanded').css("cursor", "default");
     });
 
 

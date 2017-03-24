@@ -48,14 +48,14 @@ initApp = function() {
                     providerData: providerData
                 };
                 console.log(details.displayName);
-                $('#sign-in-status').html('Signed in');
+                // Display correct nav buttons
                 $('#sign-in').hide();
                 $('#sign-out').show();
-
-                document.getElementById('accountModal').textContent = JSON.stringify(details, null, 'null');
+                $('#account-details').html('Signed in as ' + details.displayName);
             });
         } else {
             // User is signed out.
+            // Display correct nav buttons
             $('#sign-in-status').html('Signed out');
             $('#sign-in').show();
             $('#sign-out').hide();
