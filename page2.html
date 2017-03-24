@@ -27,8 +27,11 @@
     <nav role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="page2.html" class="brand-logo"><img src="assets/images/2e91eb2e5eb33ce34742a235087a1c42_-cute-bookworm-clipart-free-bookworm-images-free_50-50.png" alt="Image of a green worm with glasses sitting on three books."></a>
-            <ul class="right hide-on-med-and-down">
-                <!-- <li><a class="waves-effect waves-light btn" href="#" id="siBtn">Sign-In</a></li> -->
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <!-- <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li> -->
+                <li><p id="sign-in-status"></p></li>
+                <li><a id="account-details"></a></li>
+                <li><a id="sign-in" class="waves-effect waves-light btn" href="#signIn"></a></li>
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Navbar Link</a></li>
@@ -195,13 +198,16 @@
                 </li>
             </ul>
         </div>
-        <!-- Sign In Modal -->
-        <!-- Modal Structure -->
+        <!-- Sign in Modal -->
         <div id="signIn" class="modal">
-            <div class="modal-content">
-            </div>
+            <div id="firebaseui-auth-container"></div>
         </div>
-        <!-- End Sign In Modal -->
+        <!-- Sign out Modal -->
+        <div id="signOut" class="modal">
+        </div>
+        <!-- Account Details Modal -->
+        <div id="accountModal" class="modal">
+        </div>
     </main>
     <!-- Footer -->
     <footer class="page-footer">
@@ -229,12 +235,12 @@
     </footer>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- App.js -->
-    <script src="assets/javascript/app.js"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <!-- Google Book Preview JavaScript -->
     <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+    <!-- App.js -->
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
