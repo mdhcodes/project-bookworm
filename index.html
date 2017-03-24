@@ -26,6 +26,7 @@
     <!-- Initializes the sign-in widget from firebase web -->
     <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    
 </head>
 
 <body>
@@ -33,22 +34,6 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo"></a>
             <ul class="right hide-on-med-and-down">
-                <script>
-                    var uiConfig = {
-                        signInSuccessUrl: 'page2.html',
-                        signInOptions: [
-                            // Leave the lines as is for the providers you want to offer your users.
-                            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                            // firebase.auth.EmailAuthProvider.PROVIDER_ID
-                        ],
-                        // Terms of service url.
-                        tosUrl: '<your-tos-url>'
-                    };
-                    // Initialize the FirebaseUI Widget using Firebase.
-                    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-                    // The start method will wait until the DOM is loaded.
-                    ui.start('#signIn', uiConfig);
-                </script>
                 <div id=”firebaseui-auth-container”></div>
                 <!-- <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li> -->
             </ul>
