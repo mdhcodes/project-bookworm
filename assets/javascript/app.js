@@ -59,7 +59,7 @@ function resultsGoogle (obj) {
         var author = obj.items[i].volumeInfo.authors[0];
         var image = obj.items[i].volumeInfo.imageLinks.thumbnail;
         var description = obj.items[i].volumeInfo.description;
-        // var isbn = obj.items[i].volumeInfo.industryIdentifiers[0].identifier;
+        var isbn = obj.items[i].volumeInfo.industryIdentifiers[0].identifier;
 
         // Filter for only ISBN-10 values
         for(var j = 0; j < obj.items[i].volumeInfo.industryIdentifiers.length; j++) {
@@ -67,7 +67,7 @@ function resultsGoogle (obj) {
                 var isbn = obj.items[i].volumeInfo.industryIdentifiers[j].identifier;
                 // Call function to write result cards and modal trigger
                 resultsHTML(image, title, author, description, isbn, i);
-                console.log('ISBN', isbn);
+                //console.log('ISBN', isbn);
             } // end if
          } // end j loop
     } //End i loop
@@ -82,7 +82,7 @@ function caseFix(str) {
         newTitle.push(str[i][0].toUpperCase() + str[i].slice(1));
         title = newTitle.join(' ');
     }
-    console.log(title);
+    //console.log(title);
     return title;
 } //End caseFix stored function
 
@@ -161,10 +161,12 @@ $(document).ready(function() {
 
 // Author Search - Google Books API
     $("#author-search").on('click', function() {
+      // Check to ensure the input field contains text before the input value is captured.
+      if($('#author').val().length > 0) {
         // Reset results div
         $('#results-div').html("");
         // Set search term
-        var author = $("#author").val().trim();
+        var author = $('#author').val().trim();
         var googleBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=inauthor:' + author + '&maxResults=8';
         // API call
         $.ajax({
@@ -188,10 +190,17 @@ $(document).ready(function() {
             $('#results-div').append('<div class="api-data">');
             // Call function to write results display HTML
             resultsGoogle(result);
+            // Clear the input field when the user clicks the search button.
+            $('#author').val('');
         }).fail(function(error) {
             console.log('Google Books: An error occurred.');
         }); // end API call
+      } else {
+        // If there is no text in the input field, the following message displays.
+        console.log('Please enter an author\'s name.');
+      }// if($('#author').val().length > 0)
     }); //End author search
+
 
 
 // Best Seller Search - NYT API
@@ -319,7 +328,7 @@ $(document).ready(function() {
         $('#library-div').append(libraryButton);
         // Call function to create book preview
         initialize(isbn);
-        
+
         // Open modal
         $('#modal-result').modal('open');
         console.log($(this).attr('data-isbn'));
