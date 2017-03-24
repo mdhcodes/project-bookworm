@@ -105,7 +105,7 @@ function resultsNyt (obj) {
                 var image = obj.results.lists[i].books[j].book_image;
                 var description = obj.results.lists[i].books[j].description;
                 var isbn = obj.results.lists[i].books[j].primary_isbn10;
-                // Call function to write result cards, modal trigger, and Open Library button
+                // Call function to write result cards, and modal trigger
                 resultsHTML(image, title, author, description, isbn, i);
             } // end j for loop
         } // end if statement
@@ -158,11 +158,14 @@ $(document).ready(function() {
         }); // end API call
     }); //End Mood and Genre Search
 
+// Regular expression to check for letters and spaces.
+var lettersAndSpaces = /^[a-zA-Z\s]*$/;
 
 // Author Search - Google Books API
     $("#author-search").on('click', function() {
-      // Check to ensure the input field contains text before the input value is captured.
-      if($('#author').val().length > 0) {
+      console.log('Author', $('#author').val().trim().length);
+      // Check to ensure the input field contains text with spaces and not only whitespace before the input value is captured.
+      if($('#author').val().trim().length > 0 && $('#author').val().trim().match(lettersAndSpaces)) {
         // Reset results div
         $('#results-div').html("");
         // Set search term
@@ -196,11 +199,19 @@ $(document).ready(function() {
             console.log('Google Books: An error occurred.');
         }); // end API call
       } else {
-        // If there is no text in the input field, the following message displays.
-        console.log('Please enter an author\'s name.');
-      }// if($('#author').val().length > 0)
+        //console.log('Please enter an author\'s name.');
+        // Modal will display if there is no text in the input field and if there are only spaces.
+        $('#author-modal').modal('open');
+      } // if($('#author').val().trim().length > 0 && $('#author').val().trim().match(lettersAndSpaces))
     }); //End author search
 
+
+    // Deactivate the enter key so the page does not refresh.
+    $('#author').on('keydown', function(e) {
+       if (e.keyCode === 13) {
+            e.preventDefault();
+       }
+     });
 
 
 // Best Seller Search - NYT API
@@ -230,42 +241,6 @@ $(document).ready(function() {
             console.log('NY Times: An error occurred.');
         }); // end API call
     }); // end NYT search
-
-
-// Open Library API
-    $(document).on('click', '.library', function() {
-
-        var isbn = $(this).attr('data-isbn');
-        console.log('Open Library ISBN', isbn);
-
-        var openLibraryURL = 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=data';
-
-         $.ajax({
-            url: openLibraryURL,
-            method: 'GET',
-            dataType: 'jsonp'
-        }).done(function(result) {
-            console.log('Open Library', result);
-            var resultObj = result["ISBN:" + isbn + ""];
-
-            // console.log('Link', link);
-            if(result["ISBN:" + isbn + ""] === undefined) {
-                // If no result found...
-                // Modal will display if there is no link available.
-                $('#library-modal').modal('open');
-                console.log('link don\'t work! - modal time!');
-            } else {
-                // If result is found...
-                // The window object opens a new tab with the link.
-                window.open(result["ISBN:" + isbn + ""].url);
-                console.log('link available');
-          }
-
-        }).fail(function(error) {
-          console.log('Open Library: An error occurred.');
-        }); // end API call
-
-    }); // end open library .library click event
 
 
 // Collapsible Behavior (results/search)
@@ -355,6 +330,7 @@ $(document).ready(function() {
         console.log("could not embed the book!");
         $('#preview-div').hide();
         $('#previewYes').hide();
+        $('#buy-links').hide();
         $('#previewNo').show();
     }
 

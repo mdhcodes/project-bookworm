@@ -90,6 +90,15 @@ h5 {
   overflow: hidden;
 }
 
+.back-arrow {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#img-div {
+  margin-top: 15px;
+}
+
 
 /*Collapsable Search/Results Element*/
 
@@ -145,6 +154,12 @@ h5 {
     padding-bottom: 0px !important;
 }
 
+#buy-links {
+  font-size: 1em;
+  display: inline-block;
+  vertical-align: super;
+  margin-left: 5px;
+}
 
 /*Sign-In Page*/
 #logOn {
