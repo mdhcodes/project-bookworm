@@ -1,0 +1,29 @@
+body, nav {
+    /*background-image: url("../images/background.png");*/
+    background: rgb(249,247,243);
+}
+
+nav, .btn {
+    box-shadow: none;
+}
+
+h5, span, p {
+    font-family: 'Prata', serif;
+    color: rgb(50,79,87);
+}
+
+#why {
+	color: rgb(173,103,42);
+}
+
+.btn {
+    background-color: rgb(50,79,87);
+}
+
+.btn:hover {
+    background-color: rgb(171,182,187);
+}
+
+footer.page-footer {
+	background-color: rgb(50,79,87);
+}
