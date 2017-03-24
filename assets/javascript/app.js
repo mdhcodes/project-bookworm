@@ -28,7 +28,7 @@ function resultsHTML(imageFn, titleFn, authorFn, descriptionFn, isbnFn, iFn) {
     });
     card.append(cardContent);
     var cardTitle = $('<span/>', {
-        class: 'card-title activator grey-text text-darken-4',
+        class: 'card-title activator grey-text text-darken-4 title-display',
         text: caseFix(titleFn)
     });
     cardContent.append(cardTitle);
@@ -188,10 +188,10 @@ $(document).ready(function() {
             h3.text(author);
             $('#results-div').append(h3);
             $('#results-div').append('<div class="api-data">');
-            // Call function to write results display HTML
-            resultsGoogle(result);
             // Clear the input field when the user clicks the search button.
             $('#author').val('');
+            // Call function to write results display HTML
+            resultsGoogle(result);
         }).fail(function(error) {
             console.log('Google Books: An error occurred.');
         }); // end API call

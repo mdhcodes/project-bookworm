@@ -5,6 +5,7 @@ nav .brand-logo {
   padding-top: 5px;
 }
 
+
 /*Landing page*/
 #container1 {
     position: relative;
@@ -25,6 +26,7 @@ nav .brand-logo {
     right: 100px;
 }
 
+
 /*Search and Results page*/
 .textCenter {
     text-align: center;
@@ -32,7 +34,7 @@ nav .brand-logo {
 
 h5 {
     display: inline-block;
-    vertical-align: super
+    vertical-align: super;
 }
 
 .left-bracket {
@@ -80,6 +82,12 @@ h5 {
   font-size: 1em;
 }
 
+.title-display {
+  height: 40px;
+  overflow: hidden;
+}
+
+
 /*Collapsable Search/Results Element*/
 
 .collapsible,
@@ -97,6 +105,7 @@ h5 {
 #search-collapse {
     opacity: 0;
 }
+
 
 /*Results Modal*/
 #modal-result {
@@ -127,11 +136,13 @@ h5 {
     padding-bottom: 0px !important;
 }
 
+
 /*Sign-In Page*/
 #logOn {
     background-color: #26a69a;
     color: white;
 }
+
 
 /*About Us page*/
 .about-us {
@@ -154,10 +165,9 @@ figcaption a {
 }
 
 .connect {
-    /*margin: 1em 0;*/
-    margin-right: 20px;
-    display: inline-block;
+    margin: 0.5em 0;
 }
+
 
 /*Sticky Footer*/
 body {
@@ -168,4 +178,18 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+
+/*Media Queries*/
+
+@media screen and (max-width: 1070px) {
+
+  #left-bracket {
+      display: none;
+  }
+
+  #right-bracket {
+      display: none;
+  }
 }
