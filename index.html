@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Google Book Preview JavaScript -->
+    <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <!-- Initializes the sign-in widget from firebase web -->
@@ -33,9 +35,13 @@
     <nav class="#cfd8dc blue-grey lighten-4" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo"></a>
-            <ul class="right hide-on-med-and-down">
-                <div id=”firebaseui-auth-container”></div>
+            <ul class="right">
                 <!-- <li><a class="waves-effect waves-light btn" href="#signIn" id="siBtn">Sign-In</a></li> -->
+                <li><p id="sign-in-status"></p></li>
+                <li><a id="account-details" class="waves-effect waves-light btn" href="#accountModal">Account Details</a></li>
+                <li><a id="sign-in" class="waves-effect waves-light btn" href="#signIn">Sign In</a></li>
+                <li><a id="sign-out" class="waves-effect waves-light btn">Sign Out</a></li>
+
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Navbar Link</a></li>
@@ -69,8 +75,16 @@
         <div class="section">
         </div>
     </div>
-    <!-- Modal Structure -->
-    <div id="signIn" class="modal"></div>
+    <!-- Sign in Modal -->
+    <div id="signIn" class="modal">
+        <div id="firebaseui-auth-container"></div>
+    </div>
+    <!-- Sign out Modal -->
+    <div id="signOut" class="modal">
+    </div>
+    <!-- Account Details Modal -->
+    <div id="accountModal" class="modal">
+    </div>
     
 
 </body>
