@@ -66,7 +66,7 @@ function resultsGoogle (obj) {
             if(obj.items[i].volumeInfo.industryIdentifiers[j].identifier.length === 10) {
                 var isbn = obj.items[i].volumeInfo.industryIdentifiers[j].identifier;
                 // Call function to write result cards and modal trigger
-                resultsHTML(image, title, author, description, isbn, i);                
+                resultsHTML(image, title, author, description, isbn, i);
                 //console.log('ISBN', isbn);
             } // end if
          } // end j loop
@@ -205,6 +205,13 @@ var lettersAndSpaces = /^[a-zA-Z\s]*$/;
       } // if($('#author').val().trim().length > 0 && $('#author').val().trim().match(lettersAndSpaces))
     }); //End author search
 
+
+    // Deactivate the enter key so the page does not refresh.
+    $('#author').on('keydown', function(e) {
+       if (e.keyCode === 13) {
+            e.preventDefault();
+       }
+     });
 
 
 // Best Seller Search - NYT API
