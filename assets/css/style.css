@@ -1,3 +1,10 @@
+/*General*/
+
+nav .brand-logo {
+  font-size: 1.5rem;
+  padding-top: 5px;
+}
+
 /*Landing page*/
 #container1 {
     position: relative;
@@ -139,11 +146,17 @@ figcaption a {
 }
 
 #pew-data {
-    margin-top: 50px;
+    margin-top: 100px;
+}
+
+.pew-data-btn {
+  width: 192.38px;
 }
 
 .connect {
-    margin: 1em 0;
+    /*margin: 1em 0;*/
+    margin-right: 20px;
+    display: inline-block;
 }
 
 /*Sticky Footer*/
