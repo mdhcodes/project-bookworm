@@ -25,5 +25,5 @@ ui.start('#signIn', uiConfig);
 
 
 var database = firebase.database();
-
+console.log(database);
 
