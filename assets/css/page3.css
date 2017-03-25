@@ -17,7 +17,7 @@ h5, span, p {
 }
 
 #why {
-	color: rgb(173,103,42);
+	color: rgb(236,123,37);
 }
 
 .btn {
@@ -30,4 +30,8 @@ h5, span, p {
 
 footer.page-footer {
 	background-color: rgb(50,79,87);
+}
+
+a h5, a {
+	color: rgb(236,123,37)
 }
