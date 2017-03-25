@@ -72,3 +72,10 @@ tbody {
     vertical-align: middle;
 }
 
+modal-content, .back-arrow, #title-text, #previewYes, #previewNo, #buy-links {
+	color: rgb(50,79,87);
+}
+
+modal-content {
+	background-color: rgb(249,247,243);
+}
