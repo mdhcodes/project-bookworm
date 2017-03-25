@@ -168,6 +168,18 @@ h5 {
     color: white;
 }
 
+#signOut, #signIn {
+    width: 500px;
+    text-align: center;
+    padding: 30px;
+}
+
+.firebaseui-idp-google>.firebaseui-idp-text {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
 
 /*About Us page*/
 .about-us {
