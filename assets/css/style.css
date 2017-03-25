@@ -78,7 +78,8 @@ h5 {
 }
 
 .results-body {
-    height: 1015px;
+    min-height: 1015px;
+    overflow: auto;
 }
 
 .card .card-title {
