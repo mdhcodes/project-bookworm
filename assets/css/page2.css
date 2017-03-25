@@ -3,6 +3,10 @@ body, nav, .collapsible-header {
     background-color: rgb(171,182,187);
 }
 
+a {
+	color: rgb(236,123,37);
+}
+
 .collapsible-header, .collapsible-header > i {
 	color: rgb(50,79,87);
 }
