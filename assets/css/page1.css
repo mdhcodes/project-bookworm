@@ -7,11 +7,11 @@ nav, .btn {
     box-shadow: none;
 }
 
-h1, h5, span {
+.click, h1, h5, span {
     font-family: 'Prata', serif;
 }
 
-h1 {
+.click, h1 {
     color: rgb(236,123,37);
 }
 
@@ -22,4 +22,10 @@ h1 {
 nav ul a, h5, span {
     color: rgb(50,79,87);
 }
+#logo1 {
+	width: 200px;
+	height: 200px;
+}
+
+
 

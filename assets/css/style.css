@@ -1,4 +1,12 @@
 /*General*/
+.click{
+  margin: 0px;
+  font-weight: bold;
+  font-size: 21px;
+}
+.test {
+  margin-bottom: 0px;
+}
 nav, .btn {
     box-shadow: none;
 }
