@@ -158,6 +158,16 @@ $(document).ready(function() {
         }); // end API call
     }); //End Mood and Genre Search
 
+
+// Keydown event listener to execute author search when the enter key is pressed.
+     $(".author-form").on("keydown", function(e) {
+	      if (e.keyCode == 13) {
+		        $('#author-search').trigger('click');
+            console.log('Click event');
+	      }
+     });
+
+
 // Regular expression to check for letters and spaces.
 var lettersAndSpaces = /^[a-zA-Z\s]*$/;
 
@@ -206,12 +216,16 @@ var lettersAndSpaces = /^[a-zA-Z\s]*$/;
     }); //End author search
 
 
+
     // Deactivate the enter key so the page does not refresh.
     $('#author').on('keydown', function(e) {
        if (e.keyCode === 13) {
             e.preventDefault();
        }
      });
+
+
+
 
 
 // Best Seller Search - NYT API
