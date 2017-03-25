@@ -8,6 +8,10 @@ nav .brand-logo {
   padding-top: 5px;
 }
 
+a h5 {
+    padding-left: 15px;
+}
+
 
 /*Landing page*/
 #container1 {

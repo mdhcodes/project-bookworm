@@ -7,6 +7,10 @@ nav, .btn {
     box-shadow: none;
 }
 
+nav ul a {
+	color: rgb(50,79,87);
+}
+
 h5, span, p {
     font-family: 'Prata', serif;
     color: rgb(50,79,87);
