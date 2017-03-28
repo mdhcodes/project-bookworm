@@ -82,3 +82,11 @@ modal-content, .back-arrow, #title-text, #previewYes, #previewNo, #buy-links {
 modal-content {
 	background-color: rgb(249,247,243);
 }
+
+#bookfind-div {
+  margin-top: 40px;
+}
+
+#bookfind-div p {
+  color: rgb(50,79,87);
+}

@@ -318,7 +318,9 @@ var lettersAndSpaces = /^[a-zA-Z\s]*$/;
         var isbn = $(this).attr('data-isbn');
         var libraryButton = $('<a/>', {
             class: 'waves-effect waves-light btn library',
+            target: '_blank',
             'data-isbn': isbn,
+            href: 'http://www.worldcat.org/isbn/' + isbn,
             text: 'Library Info'
         });
         // Populate modal with stored data
